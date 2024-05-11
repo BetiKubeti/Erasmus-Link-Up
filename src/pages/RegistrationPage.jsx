@@ -6,7 +6,7 @@ import {
     sendEmailVerification,
     updateProfile,
 } from 'firebase/auth';
-import { auth, firestore } from '../../firebase';
+import { auth, firestore } from '../firebase';
 import {
     collection,
     addDoc,
@@ -43,15 +43,6 @@ const RegistrationForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [aboutCompany, setAboutCompany] = useState('');
-    const [contactEmail, setContactEmail] = useState('');
-    const [contactPhone, setContactPhone] = useState('');
-    const [contactLinkedIn, setContactLinkedIn] = useState('');
-    const [contactFacebook, setContactFacebook] = useState('');
-    const [contactInstagram, setContactInstagram] = useState('');
-    const [locationCity, setLocationCity] = useState('');
-    const [locationCountry, setLocationCountry] = useState('');
-    const [subcategories, setSubcategories] = useState([]);
 
     const [companyNameError, setCompanyNameError] = useState('');
     const [websiteURLError, setWebsiteURLError] = useState('');
@@ -130,15 +121,6 @@ const RegistrationForm = () => {
             websiteURL,
             category,
             email,
-            aboutCompany,
-            contactEmail,
-            contactPhone,
-            contactLinkedIn,
-            contactFacebook,
-            contactInstagram,
-            locationCity,
-            locationCountry,
-            subcategories,
             registrationDate: serverTimestamp(),
         };
 

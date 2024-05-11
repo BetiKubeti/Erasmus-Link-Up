@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { auth, firestore } from '../../firebase';
+import { auth, firestore } from '../firebase';
 import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
 import Footer from '../components/Footer'
 
