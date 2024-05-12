@@ -1,0 +1,144 @@
+/* Error message */
+
+.registration-page .error-message p {
+    color: #FA6244;
+    font-size: 16px;
+}
+
+.signin-page .error-message p {
+    color: #FA6244;
+    font-size: 16px;
+}
+
+/* Registration page */
+
+.registration-page {
+    width: 100%;
+}
+
+.registration-page-wrap {
+    display: flex;
+    background-color: #ECF6FF !important;
+    border: 2px solid #000;
+    border-radius: 15px;
+    position: relative;
+    margin: 10% 31%;
+    width: 40%;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-page-container {
+    padding: 30px 0;
+    width: 80%;
+}
+
+.registration-page-wrap h2 {
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.registration-page-wrap form p {
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.registration-page-wrap form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration-page-wrap form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.registration-page-wrap form .input-container {
+    height: 45px;
+}
+
+.registration-page-wrap form div button {
+    width: 100%;
+    outline: none;
+    height: 100%;
+    border: 1px solid #000;
+    border-radius: 15px;
+    background-color: #73CDC2;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 400;
+    transition: .5s ease-out;
+}
+
+.registration-page-wrap form div button:hover {
+    background-color: #3AAC9F;
+}
+
+.registration-page-wrap form div select {
+    width: 100%;
+    outline: none;
+    height: 100%;
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding-left: 20px;
+    font-size: 18px;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+    -webkit-padding-start: 20px;
+    -moz-padding-start: 20px;
+    background-color: #fff;
+    
+    color: #000;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+
+.registration-page-wrap form .input-container input {
+    width: 99.7%;
+    outline: none;
+    height: 100%;
+    padding-left: 20px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    background-color: #B8D0FE;
+    font-size: 18px;
+}
+
+.registration-page-wrap form .input-container input::placeholder {
+    font-size: 18px;
+    color: #7397DB;
+}
+
+.registration-page-wrap .change-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #000;
+}
+
+.registration-page-wrap .change-option a {
+    text-decoration: none;
+    color: #7397DB;
+}
+
+.registration-page-wrap .change-option a:hover {
+    text-decoration: underline;
+}

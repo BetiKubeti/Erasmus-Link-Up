@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import { NavLink, useLocation } from 'react-router-dom';
 
+import SearchBar from '../components/SearchBar'
 import ProfileButton from './ProfileButton';
 
 // Navigation bar component
@@ -22,6 +23,10 @@ const Nav = () => {
                     <NavLink to="/">
                         <span>Collabo</span>Green
                     </NavLink>
+                </div>
+                <div className="banner-search-bar">
+                    {/* Container for the search bar */}
+                    <SearchBar />
                 </div>
                 {/* Contents section with navigation links */}
                 <div className='contents'>

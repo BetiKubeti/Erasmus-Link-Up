@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    scroll-behavior: smooth;
+}
+
+/* Styling of the navigation bar */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+nav .nav-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #B8D0FE;
+    width: 100%;
+    padding: 16px 48px;
+    text-decoration: none;
+    border-bottom: 2px solid #000;
+}
+
+nav .nav-container .logo a {
+    color: #73CDC2;
+    text-decoration: none;
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: -1px 1px 0 #000,
+        1px 1px 0 #000,
+        1px -1px 0 #000,
+        -1px -1px 0 #000;
+}
+
+nav .nav-container .logo a span {
+    color: #FA6244;
+}
+
+nav .contents {
+    width: 38%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .contents a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+}
+
+nav .contents a:nth-child(1),
+nav .contents a:nth-child(2) {
+    border-bottom: 2px solid transparent;
+}
+
+nav .contents a.active-navbar-link {
+    border-bottom: 2px solid #000;
+}
+
+nav .contents a:nth-child(1):hover,
+nav .contents a:nth-child(2):hover {
+    border-bottom: 2px solid #000;
+}

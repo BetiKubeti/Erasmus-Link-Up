@@ -82,7 +82,7 @@ export default function SearchBar() {
             <form className='search-bar' action="">
                 <input
                     type="text"
-                    placeholder="Search for a company, category, or location..."
+                    placeholder="Search"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className={showSuggestions ? 'active' : ''}

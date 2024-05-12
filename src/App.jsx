@@ -1,6 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import '../src/App.jsx';
+import './assets/styles/NavStyle.css';
+import './assets/styles/HomePageStyle.css';
+import './assets/styles/RegistrationPageStyle.css';
+import './assets/styles/SignInPageStyle.css';
+// import './assets/styles/ProfilePageStyle.css';
+import './assets/styles/FooterStyle.css';
+import './assets/styles/SearchBarStyle.css';
 
 import Nav from "./components/Nav";
 import HomePage from "./pages/HomePage.jsx";

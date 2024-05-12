@@ -22,14 +22,7 @@ export default function HomePage() {
                         {/* Container for the content within the banner */}
                         <div className="banner-text">
                             {/* Container for the banner text */}
-                            <p>Discover businesses and <span>collaborate</span>.</p>
-                            <p>Read and write reviews. Keep in mind <span>sustainability</span>.</p>
                             {/* Text content within the banner */}
-                        </div>
-                        <div className="banner-search-bar">
-                            {/* Container for the search bar */}
-                            <SearchBar />
-                            {/* Include the SearchBar component here */}
                         </div>
                     </div>
                 </div>
