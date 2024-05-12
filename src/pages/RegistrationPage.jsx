@@ -18,33 +18,16 @@ import {
 import Modal from 'react-modal';
 import Footer from '../components/Footer';
 
-const categories = [
-    "Software & Technology",
-    "Environmental & Sustainability",
-    "Education & Training",
-    "Home & Garden",
-    "Legal Services",
-    "Professional Services",
-    "Marketing & Advertising",
-    "Financial Services",
-    "Healthcare & Medical Services",
-    "Retail & E-commerce",
-    "Automotive & Transportation",
-    "Entertainment and Media",
-    "Hospitality and Travel",
-    "Fitness & Wellness",
-    "Manufacturing & Industrial"
-];
-
 const RegistrationForm = () => {
-    const [companyName, setCompanyName] = useState('');
+    const [userType, setUserType] = useState('company');
+    const [name, setName] = useState('');
     const [websiteURL, setWebsiteURL] = useState('');
     const [category, setCategory] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const [companyNameError, setCompanyNameError] = useState('');
+    const [nameError, setNameError] = useState('');
     const [websiteURLError, setWebsiteURLError] = useState('');
     const [categoryError, setCategoryError] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -59,7 +42,7 @@ const RegistrationForm = () => {
         e.preventDefault();
 
         // Reset any previous error messages.
-        setCompanyNameError('');
+        setNameError('');
         setWebsiteURLError('');
         setCategoryError('');
         setEmailError('');
@@ -69,8 +52,8 @@ const RegistrationForm = () => {
         let hasErrors = false;
 
         // Error checks
-        if (!companyName) {
-            setCompanyNameError('Please enter your company name');
+        if (!name) {
+            setNameError('Please enter your company name');
             hasErrors = true;
         }
 
@@ -117,7 +100,7 @@ const RegistrationForm = () => {
 
         // Proceed with registration if email and company name are not already used.
         const companyData = {
-            companyName,
+            name,
             websiteURL,
             category,
             email,
@@ -129,7 +112,7 @@ const RegistrationForm = () => {
 
             // Update the user's display name
             await updateProfile(userCredential.user, {
-                displayName: companyName,
+                displayName: name,
             });
 
             await sendEmailVerification(auth.currentUser);
@@ -169,53 +152,55 @@ const RegistrationForm = () => {
                 <div className='registration-page-wrap'>
                     <div className='registration-page-container'>
                         {/* Registration form header */}
-                        <h2>Sign Up to CollaboGreen</h2>
+                        <h2>Sign Up to ErasmusLinkUp</h2>
                         {/* Registration form */}
                         <form onSubmit={handleRegistration}>
+                            <p>Your profile type:</p>
+                            <div className='user-type-buttons'>
+                                <label htmlFor='company' className={userType === 'company' ? 'radio-checked' : ''}>
+                                    <input
+                                        type='radio'
+                                        id='company'
+                                        name='userType'
+                                        value='company'
+                                        checked={userType === 'company'}
+                                        onChange={(e) => setUserType(e.target.value)}
+                                    />
+                                    Company Profile
+                                </label>
+                                <label htmlFor='personal' className={userType === 'personal' ? 'radio-checked' : ''}>
+                                    <input
+                                        type='radio'
+                                        id='personal'
+                                        name='userType'
+                                        value='personal'
+                                        checked={userType === 'personal'}
+                                        onChange={(e) => setUserType(e.target.value)}
+                                    />
+                                    Personal Profile
+                                </label>
+                            </div>
                             {/* Company Information section */}
-                            <p>Company Information:</p>
+                            <p>Your information:</p>
                             {/* Input field for Company Name */}
                             <div className='input-container'>
-                                <input type="text" placeholder='Company Name' value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+                                <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
                             {/* Display error message for Company Name */}
                             <div className='error-message'>
-                                {companyNameError && <p>{companyNameError}</p>}
+                                {nameError && <p>{nameError}</p>}
                             </div>
-                            {/* Input field for Website URL */}
-                            <div className='input-container'>
-                                <input type="url" placeholder='Website URL: https://example.com' value={websiteURL} onChange={(e) => setWebsiteURL(e.target.value)} />
-                            </div>
-                            {/* Display error message for Website URL */}
-                            <div className='error-message'>
-                                {websiteURLError && <p>{websiteURLError}</p>}
-                            </div>
-                            {/* Dropdown for selecting category */}
-                            <div className='input-container'>
-                                <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                                    <option value="" disabled hidden defaultValue>Select a category</option>
-                                    {/* Map through categories to populate dropdown options */}
-                                    {categories.map((cat) => (
-                                        <option key={cat} value={cat}>
-                                            {cat}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            {/* Display error message for category selection */}
-                            <div className='error-message'>
-                                {categoryError && <p>{categoryError}</p>}
-                            </div>
+                            
                             {/* Input field for Email */}
                             <div className='input-container'>
-                                <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <input type="email" placeholder='your@email.com' value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             {/* Display error message for Email */}
                             <div className='error-message'>
                                 {emailError && <p>{emailError}</p>}
                             </div>
                             {/* Password section */}
-                            <p>Password:</p>
+                            <p>Your password:</p>
                             {/* Input field for Password */}
                             <div className='input-container'>
                                 <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -239,7 +224,7 @@ const RegistrationForm = () => {
                         </form>
                         {/* Option to navigate to the login page */}
                         <div className='change-option'>
-                            <p>You already have a CollaboGreen Account?</p>
+                            <p>You already have a ErasmusLinkUp account?</p>
                             <a href="/login">Log In here!</a>
                         </div>
                     </div>
