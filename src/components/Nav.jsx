@@ -3,8 +3,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import { NavLink, useLocation } from 'react-router-dom';
 
+// Components imports
 import SearchBar from '../components/SearchBar'
 import ProfileButton from './ProfileButton';
+
+// Image imports
+import Logo from '../assets/images/Logo.png';
 
 // Navigation bar component
 const Nav = () => {
@@ -19,30 +23,28 @@ const Nav = () => {
             {/* Container for the navigation bar */}
             <div className='nav-container'>
                 {/* Logo section with a link to the home page */}
-                <div className='logo'>
-                    <NavLink to="/">
-                        <span>Collabo</span>Green
-                    </NavLink>
-                </div>
-                <div className="banner-search-bar">
-                    {/* Container for the search bar */}
-                    <SearchBar />
+                <div className='logo-container'>
+                    <div className='logo'>
+                        <NavLink to="/">
+                            <img src={Logo} alt="Erasmus Link Up Logo" />
+                        </NavLink>
+                    </div>
+                    <div className="banner-search-bar">
+                        {/* Container for the search bar */}
+                        <SearchBar />
+                    </div>
                 </div>
                 {/* Contents section with navigation links */}
                 <div className='contents'>
                     {/* Home link with active class based on the current location */}
-                    <NavLink to="/" className={location.pathname === '/' ? 'active-navbar-link' : ''}>Home</NavLink>
+                    <NavLink to="/" className={location.pathname === '/' ? 'active-navbar-link' : 'nav-link'}>Home</NavLink>
                     {/* Discover Businesses link with active class based on the current location */}
-                    <NavLink to="/" className={location.pathname === '/' ? 'active-navbar-link' : ''}>Discover Businesses</NavLink>
+                    <NavLink to="/network" className={location.pathname === '/network' ? 'active-navbar-link' : 'nav-link'}>Network</NavLink>
+                    <NavLink to="/toolbox" className={location.pathname === '/toolbox' ? 'active-navbar-link' : 'nav-link'}>ToolBox</NavLink>
                     {/* Render ProfileButton when the user is signed in */}
                     {user && <ProfileButton />}
                     {/* Render SignUpLogInButton when the user is not signed in */}
-                    {!user && (
-                        <NavLink to="/">
-                            <span>Sign Up</span>
-                            <span>Log In</span>
-                        </NavLink>
-                    )}
+                    
                 </div>
             </div>
         </nav>

@@ -1,13 +1,15 @@
+body {
+    background-color: #919191;
+}
+
 .banner {
     margin-top: 91px;
     height: 75vh;
-    border-bottom: 2px solid #000;
 }
 
 .banner .banner-container {
     display: flex;
     align-items: center;
-    background-color: #ECF6FF;
     height: 100%;
     padding: 0 64px;
 }
@@ -42,93 +44,4 @@
 .banner .banner-container .banner-gif img {
     width: 100%;
     border-radius: 15px;
-}
-
-/* Search Bar */
-
-.banner .banner-container .banner-search-bar {
-    width: 100%;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar input {
-    width: 550px;
-    height: 43px;
-    font-weight: 600;
-    background-color: #B8D0FE;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding-left: 20px;
-    border: 2px solid #000;
-    border-right: 1px solid #000;
-    outline: none;
-    font-size: 16px;
-}
-
-.search-bar input.active {
-    border-bottom-left-radius: 0px;
-    border-top-right-radius: 0px;
-}
-
-.search-bar input::placeholder {
-    color: #7397DB;
-    font-weight: 600;
-}
-
-.search-bar button {
-    background-color: #73CDC2;
-    border: 2px solid #000;
-    border-left: 1px solid #000;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    height: 46px;
-    width: 48px;
-    outline: none;
-}
-
-.search-bar button:hover {
-    cursor: pointer;
-    background-color: #3AAC9F;
-}
-
-.search-bar button svg {
-    width: 27px;
-}
-
-.search-bar-container {
-    position: relative;
-}
-
-.search-results {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 550px;
-    background: #fff;
-    border: 2px solid #000;
-    border-top: transparent;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 1;
-}
-
-.search-results li {
-    list-style: none;
-    padding: 5px 0;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-}
-
-.search-results li:hover {
-    background-color: #ccc;
-}
-
-.search-results li:last-child {
-    border-bottom: none;
 }

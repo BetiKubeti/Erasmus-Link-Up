@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mada:wght@200..900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Inter';
+    font-family: 'Mada';
     scroll-behavior: smooth;
 }
 
@@ -22,51 +22,53 @@ nav .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #B8D0FE;
+    background-color: #FAFAFA;
     width: 100%;
     padding: 16px 48px;
     text-decoration: none;
-    border-bottom: 2px solid #000;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
 }
 
-nav .nav-container .logo a {
-    color: #73CDC2;
-    text-decoration: none;
-    font-size: 48px;
-    font-weight: 700;
-    text-shadow: -1px 1px 0 #000,
-        1px 1px 0 #000,
-        1px -1px 0 #000,
-        -1px -1px 0 #000;
+nav .nav-container .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
 }
 
-nav .nav-container .logo a span {
-    color: #FA6244;
+nav .nav-container .logo  {
+    width: 72px;
+}
+
+nav .nav-container .logo a img {
+    width: 100%;
 }
 
 nav .contents {
-    width: 38%;
+    width: 27%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 nav .contents a {
     text-decoration: none;
     color: #000;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 400;
 }
 
-nav .contents a:nth-child(1),
-nav .contents a:nth-child(2) {
-    border-bottom: 2px solid transparent;
+nav .contents .nav-link {
+    border-bottom: 1px solid transparent;
 }
 
 nav .contents a.active-navbar-link {
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
 }
 
-nav .contents a:nth-child(1):hover,
-nav .contents a:nth-child(2):hover {
-    border-bottom: 2px solid #000;
+nav .contents .nav-link:hover {
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
 }

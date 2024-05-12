@@ -25,6 +25,8 @@ function App() {
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/login" element={<SignInPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/network" element={<ProfilePage />} />
+          <Route path="/toolbox" element={<ProfilePage />} />
         </Routes>
       </main>
     </Router>

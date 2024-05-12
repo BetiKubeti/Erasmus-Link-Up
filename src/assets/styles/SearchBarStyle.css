@@ -3,19 +3,23 @@
     align-items: center;
     width: 550px;
     height: 43px;
-    border: 2px solid #000;
+    border: 1px solid #000;
     border-radius: 15px;
     padding: 0;
 }
 
 .search-bar input {
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 100%;
     font-weight: 600;
     border: none;
     padding-left: 20px;
     outline: none;
-    font-size: 16px;
+    font-size: 18px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;;
 }
 
 .search-bar input::placeholder {
@@ -24,19 +28,18 @@
 }
 
 .search-bar button {
-    background-color: #73CDC2;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    background-color: #034EA2;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
     border: none;
-    border-left: 2px solid #000;;
+    border-left: 1px solid #000;;
     height: 100%;
-    width: 10%;
+    width: 14%;
     outline: none;
 }
 
 .search-bar button:hover {
     cursor: pointer;
-    background-color: #3AAC9F;
 }
 
 .search-bar button svg {
@@ -53,7 +56,7 @@
     left: 0;
     width: 550px;
     background: #fff;
-    border: 2px solid #000;
+    border: 1px solid #000;
     border-top: transparent;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
