@@ -17,6 +17,7 @@ import {
 } from 'firebase/firestore';
 import Modal from 'react-modal';
 import Footer from '../components/Footer';
+import { Icon } from '@iconify/react';
 
 const RegistrationForm = () => {
     const [userType, setUserType] = useState('company');
@@ -26,10 +27,12 @@ const RegistrationForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+
+
 
     const [nameError, setNameError] = useState('');
-    const [websiteURLError, setWebsiteURLError] = useState('');
-    const [categoryError, setCategoryError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
@@ -38,13 +41,21 @@ const RegistrationForm = () => {
 
     const navigate = useNavigate();
 
+    // Function to toggle the visibility of the password
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
+
+    // Function to toggle the visibility of the confirm password
+    const toggleConfirmPasswordVisibility = () => {
+        setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+    };
+
     const handleRegistration = async (e) => {
         e.preventDefault();
 
         // Reset any previous error messages.
         setNameError('');
-        setWebsiteURLError('');
-        setCategoryError('');
         setEmailError('');
         setPasswordError('');
         setConfirmPasswordError('');
@@ -54,16 +65,6 @@ const RegistrationForm = () => {
         // Error checks
         if (!name) {
             setNameError('Please enter your company name');
-            hasErrors = true;
-        }
-
-        if (!websiteURL) {
-            setWebsiteURLError('Please enter your website URL');
-            hasErrors = true;
-        }
-
-        if (!category) {
-            setCategoryError('Choose a category');
             hasErrors = true;
         }
 
@@ -155,7 +156,9 @@ const RegistrationForm = () => {
                         <h2>Sign Up to ErasmusLinkUp</h2>
                         {/* Registration form */}
                         <form onSubmit={handleRegistration}>
-                            <p>Your profile type:</p>
+                            <div className='subtitle'>
+                                <p>Your profile type:</p>
+                            </div>
                             <div className='user-type-buttons'>
                                 <label htmlFor='company' className={userType === 'company' ? 'radio-checked' : ''}>
                                     <input
@@ -181,7 +184,9 @@ const RegistrationForm = () => {
                                 </label>
                             </div>
                             {/* Company Information section */}
-                            <p>Your information:</p>
+                            <div className='subtitle'>
+                                <p>Your information:</p>
+                            </div>
                             {/* Input field for Company Name */}
                             <div className='input-container'>
                                 <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
@@ -200,25 +205,45 @@ const RegistrationForm = () => {
                                 {emailError && <p>{emailError}</p>}
                             </div>
                             {/* Password section */}
-                            <p>Your password:</p>
+                            <div className='subtitle'>
+                                <p>Your password:</p>
+                            </div>
                             {/* Input field for Password */}
                             <div className='input-container'>
-                                <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <input
+                                    type={isPasswordVisible ? "text" : "password"}
+                                    placeholder='Password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <Icon
+                                    icon={isPasswordVisible ? "system-uicons:eye-no" : "system-uicons:eye"}
+                                    onClick={togglePasswordVisibility}
+                                />
                             </div>
                             {/* Display error message for Password */}
                             <div className='error-message'>
                                 {passwordError && <p>{passwordError}</p>}
                             </div>
-                            {/* Input field for Confirm Password */}
+
                             <div className='input-container'>
-                                <input type="password" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                                <input
+                                    type={isConfirmPasswordVisible ? "text" : "password"}
+                                    placeholder='Confirm Password'
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                />
+                                <Icon
+                                    icon={isConfirmPasswordVisible ? "system-uicons:eye-no" : "system-uicons:eye"}
+                                    onClick={toggleConfirmPasswordVisibility}
+                                />
                             </div>
                             {/* Display error message for Confirm Password */}
                             <div className='error-message'>
                                 {confirmPasswordError && <p>{confirmPasswordError}</p>}
                             </div>
                             {/* Sign Up button */}
-                            <div className='input-container'>
+                            <div className='button-container'>
                                 <button type="submit">Sign Up</button>
                             </div>
                         </form>
