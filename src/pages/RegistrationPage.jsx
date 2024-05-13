@@ -16,8 +16,11 @@ import {
     getDocs,
 } from 'firebase/firestore';
 import Modal from 'react-modal';
-import Footer from '../components/Footer';
 import { Icon } from '@iconify/react';
+
+// Components import
+import Nav from '../components/NavSignUpLogIn';
+import Footer from '../components/Footer';
 
 const RegistrationForm = () => {
     const [userType, setUserType] = useState('company');
@@ -148,6 +151,7 @@ const RegistrationForm = () => {
 
     return (
         <>
+            <Nav />
             {/* Registration page section */}
             <section className='registration-page'>
                 <div className='registration-page-wrap'>

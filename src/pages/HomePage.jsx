@@ -7,6 +7,7 @@ import { auth } from '../firebase';
 import SearchBar from '../components/SearchBar'
 import Footer from '../components/Footer'
 
+import Nav from "../components/Nav";
 export default function HomePage() {
     // This is the functional component for the HomePage
 
@@ -14,6 +15,7 @@ export default function HomePage() {
 
     return (
         <>
+            <Nav />
             <section className="banner" id="banner">
                 {/* The main section with a 'banner' class and 'banner' id */}
                 <div className="banner-container">

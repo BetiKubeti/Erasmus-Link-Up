@@ -9,7 +9,6 @@ import './assets/styles/SignInPageStyle.css';
 import './assets/styles/FooterStyle.css';
 import './assets/styles/SearchBarStyle.css';
 
-import Nav from "./components/Nav";
 import HomePage from "./pages/HomePage.jsx";
 import RegistrationPage from './pages/RegistrationPage';
 import SignInPage from './pages/SignInPage.jsx';
@@ -18,8 +17,6 @@ import ProfilePage from './pages/ProfilePage.jsx';
 function App() {
   return (
     <Router>
-      <Nav />
-      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<RegistrationPage />} />
@@ -28,7 +25,6 @@ function App() {
           <Route path="/network" element={<ProfilePage />} />
           <Route path="/toolbox" element={<ProfilePage />} />
         </Routes>
-      </main>
     </Router>
   );
 }

@@ -72,3 +72,33 @@ nav .contents .nav-link:hover {
     border-bottom: 1px solid #034EA2;
     color: #034EA2;
 }
+
+/* Nav for sign up and log in page styling */
+
+nav .nav-signup-login-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+    width: 100%;
+    padding: 16px 48px;
+    text-decoration: none;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+nav .nav-signup-login-container .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+nav .nav-signup-login-container .logo {
+    width: 72px;
+}
+
+nav .nav-signup-login-container .logo a img {
+    width: 100%;
+}
