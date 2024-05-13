@@ -20,7 +20,7 @@ import { Icon } from '@iconify/react';
 
 // Components import
 import Nav from '../components/NavSignUpLogIn';
-import Footer from '../components/Footer';
+import Footer from '../components/FooterSignUpLogIn';
 
 const RegistrationForm = () => {
     const [userType, setUserType] = useState('company');

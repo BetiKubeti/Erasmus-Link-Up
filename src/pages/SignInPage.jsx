@@ -3,7 +3,11 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth, firestore } from '../firebase';
 import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
-import Footer from '../components/Footer'
+import { Icon } from '@iconify/react';
+
+// Components import
+import Nav from '../components/NavSignUpLogIn';
+import Footer from '../components/FooterSignUpLogIn';
 
 const SignInForm = () => {
     const [email, setEmail] = useState('');
@@ -56,6 +60,7 @@ const SignInForm = () => {
 
     return (
         <>
+            <Nav />
             {/* Sign In page section */}
             <section className='signin-page'>
                 <div className='signin-page-wrap'>

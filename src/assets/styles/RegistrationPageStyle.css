@@ -82,7 +82,7 @@
 }
 
 .registration-page-wrap form .user-type-buttons label {
-    border: 1px solid #000;
+    border: 1px solid #ADB0B7;
     font-size: 18px;
     border-radius: 12px;
     padding: 10px 20px;
@@ -92,6 +92,7 @@
 
 .registration-page-wrap form .user-type-buttons .radio-checked {
     color: #034EA2;
+    border: 1px solid #034EA2;
 }
 
 .registration-page-wrap form div button {
@@ -136,7 +137,7 @@
     height: 45px;
     width: 100%;
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #606674;
     background-color: transparent;
 }
 

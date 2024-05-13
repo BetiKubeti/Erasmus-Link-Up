@@ -13,3 +13,53 @@
     font-size: 20px;
     font-weight: 400;
 }
+
+/* Footer styling for sign up and log in page */
+
+.footer-signup-login .footer-container {
+    background-color: #FAFAFA;
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-signup-login .footer-container .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.footer-signup-login .footer-container .logo {
+    width: 72px;
+}
+
+.footer-signup-login .footer-container .logo a img {
+    width: 100%;
+}
+
+
+.footer-signup-login .footer-container .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-signup-login .footer-container .footer-column a {
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #000;
+    width: fit-content;
+    border-bottom: 1px solid transparent;
+}
+
+.footer-signup-login .footer-container .footer-column a:hover {
+    color: #034EA2;
+    border-bottom: 1px solid #034EA2;
+}
+
+.footer-signup-login .footer-container .footer-column svg {
+    font-size: 28px;
+}
