@@ -23,18 +23,15 @@ import Nav from '../components/NavSignUpLogIn';
 import Footer from '../components/FooterSignUpLogIn';
 
 const RegistrationForm = () => {
-    const [userType, setUserType] = useState('company');
+    const [userType, setUserType] = useState('');
     const [name, setName] = useState('');
-    const [websiteURL, setWebsiteURL] = useState('');
-    const [category, setCategory] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
-
-
+    const [userTypeError, setUserTypeError] = useState('');
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
@@ -58,6 +55,7 @@ const RegistrationForm = () => {
         e.preventDefault();
 
         // Reset any previous error messages.
+        setUserTypeError('');
         setNameError('');
         setEmailError('');
         setPasswordError('');
@@ -66,6 +64,12 @@ const RegistrationForm = () => {
         let hasErrors = false;
 
         // Error checks
+
+        if (!userType) {
+            setUserTypeError('Please choose a user type');
+            hasErrors = true;
+        }
+
         if (!name) {
             setNameError('Please enter your company name');
             hasErrors = true;
@@ -103,10 +107,9 @@ const RegistrationForm = () => {
         }
 
         // Proceed with registration if email and company name are not already used.
-        const companyData = {
+        const userData = {
+            userType,
             name,
-            websiteURL,
-            category,
             email,
             registrationDate: serverTimestamp(),
         };
@@ -121,8 +124,8 @@ const RegistrationForm = () => {
 
             await sendEmailVerification(auth.currentUser);
 
-            // Add company data to Firestore
-            const docRef = await addDoc(collection(firestore, 'companies'), companyData);
+            // Add user data to Firestore
+            const docRef = await addDoc(collection(firestore, 'users'), userData);
             console.log('Registration and document creation successful. Document ID:', docRef.id);
 
             // Show the email confirmation modal
@@ -135,7 +138,7 @@ const RegistrationForm = () => {
 
     // Function to check if an email already exists in the database
     const checkIfEmailExists = async (email) => {
-        const querySnapshot = await getDocs(query(collection(firestore, 'companies'), where('email', '==', email)));
+        const querySnapshot = await getDocs(query(collection(firestore, 'users'), where('email', '==', email)));
         return !querySnapshot.empty;
     };
 
@@ -175,7 +178,7 @@ const RegistrationForm = () => {
                                     />
                                     Company Profile
                                 </label>
-                                <label htmlFor='personal' className={userType === 'personal' ? 'radio-checked' : ''}>
+                                <label htmlFor='personal' className={userType === 'person' ? 'radio-checked' : ''}>
                                     <input
                                         type='radio'
                                         id='personal'
@@ -186,6 +189,9 @@ const RegistrationForm = () => {
                                     />
                                     Personal Profile
                                 </label>
+                            </div>
+                            <div className='error-message'>
+                                {userTypeError && <p>{userTypeError}</p>}
                             </div>
                             {/* Company Information section */}
                             <div className='subtitle'>

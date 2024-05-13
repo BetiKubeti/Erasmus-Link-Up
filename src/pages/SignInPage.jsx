@@ -14,8 +14,14 @@ const SignInForm = () => {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const navigate = useNavigate();
+
+    // Function to toggle the visibility of the password
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -65,9 +71,9 @@ const SignInForm = () => {
             <section className='signin-page'>
                 <div className='signin-page-wrap'>
                     {/* Sign In form container */}
-                    <div className='registration-page-container'>
+                    <div className='signin-page-container'>
                         {/* Sign In form header */}
-                        <h2>Log In to CollaboGreen</h2>
+                        <h2>Log In to ErasmusLinkUp</h2>
                         {/* Sign In form */}
                         <form onSubmit={handleSignIn}>
                             {/* Input field for Email */}
@@ -80,14 +86,23 @@ const SignInForm = () => {
                             </div>
                             {/* Input field for Password */}
                             <div className='input-container'>
-                                <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <input
+                                    type={isPasswordVisible ? "text" : "password"}
+                                    placeholder='Password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <Icon
+                                    icon={isPasswordVisible ? "system-uicons:eye-no" : "system-uicons:eye"}
+                                    onClick={togglePasswordVisibility}
+                                />
                             </div>
                             {/* Display error message for Password */}
                             <div className='error-message'>
                                 {passwordError && <p>{passwordError}</p>}
                             </div>
                             {/* Sign In button */}
-                            <div className='input-container'>
+                            <div className='button-container'>
                                 <button type="submit">Sign In</button>
                             </div>
                         </form>
