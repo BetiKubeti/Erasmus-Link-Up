@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+.search-bar.active {
+    border-bottom-left-radius: 0px;
+}
+
 .search-bar input {
     display: flex;
     align-items: center;
@@ -54,7 +58,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 550px;
+    width: 465px;
     background: #fff;
     border: 1px solid #000;
     border-top: transparent;

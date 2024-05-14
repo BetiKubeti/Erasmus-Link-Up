@@ -178,13 +178,13 @@ const RegistrationForm = () => {
                                     />
                                     Company Profile
                                 </label>
-                                <label htmlFor='personal' className={userType === 'person' ? 'radio-checked' : ''}>
+                                <label htmlFor='person' className={userType === 'person' ? 'radio-checked' : ''}>
                                     <input
                                         type='radio'
-                                        id='personal'
+                                        id='person'
                                         name='userType'
-                                        value='personal'
-                                        checked={userType === 'personal'}
+                                        value='person'
+                                        checked={userType === 'person'}
                                         onChange={(e) => setUserType(e.target.value)}
                                     />
                                     Personal Profile
