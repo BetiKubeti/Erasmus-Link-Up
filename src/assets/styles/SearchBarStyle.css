@@ -40,6 +40,9 @@
     height: 100%;
     width: 14%;
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-bar button:hover {
@@ -47,7 +50,7 @@
 }
 
 .search-bar button svg {
-    width: 27px;
+    font-size: 32px;
 }
 
 .search-bar-container {

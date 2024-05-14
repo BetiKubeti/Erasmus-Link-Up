@@ -2,46 +2,16 @@ body {
     background-color: #919191;
 }
 
-.banner {
-    margin-top: 91px;
-    height: 75vh;
-}
-
-.banner .banner-container {
+.homepage-container {
+    margin-top: 168px;
     display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 64px;
+    justify-content: space-between;
 }
 
-.banner .banner-container .banner-content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 100px;
+.current-profile-card {
+    border-radius: 16px;
+    background-color: #FAFAFA;
+    padding: 48px;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.banner .banner-container .banner-content-container .banner-text p {
-    font-size: 38px;
-    font-weight: 700;
-    width: 90%;
-}
-
-.banner .banner-container .banner-content-container .banner-text p:nth-child(1) span {
-    color: #FA6244;
-}
-
-.banner .banner-container .banner-content-container .banner-text p:nth-child(2) span {
-    color: #73CDC2;
-}
-
-.banner .banner-container .banner-gif {
-    width: 55%;
-}
-
-.banner .banner-container .banner-gif img {
-    width: 100%;
-    border-radius: 15px;
-}

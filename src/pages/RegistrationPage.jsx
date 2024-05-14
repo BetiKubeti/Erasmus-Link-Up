@@ -15,7 +15,6 @@ import {
     where,
     getDocs,
 } from 'firebase/firestore';
-import Modal from 'react-modal';
 import { Icon } from '@iconify/react';
 
 // Components import
@@ -129,7 +128,7 @@ const RegistrationForm = () => {
             console.log('Registration and document creation successful. Document ID:', docRef.id);
 
             // Show the email confirmation modal
-            setEmailConfirmationModalOpen(true);
+            navigate(`/`);
         } catch (error) {
             console.error('Registration error:', error);
             // Handle registration error, e.g., display an error message.
@@ -265,28 +264,6 @@ const RegistrationForm = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Email Confirmation Modal */}
-            <Modal
-                isOpen={isEmailConfirmationModalOpen}
-                contentLabel="Email Confirmation Modal"
-                className="custom-modal"
-                id='pop-up'
-            >
-                <div className='pop-up-container'>
-                    {/* Modal header */}
-                    <h2>Check Your Email</h2>
-                    {/* Modal content */}
-                    <p>An email has been sent to you for confirmation. Please verify your email to complete the registration.</p>
-                    {/* Modal buttons */}
-                    <div className='buttons'>
-                        {/* Close button triggers closing modal and navigating to home */}
-                        <button onClick={() => setEmailConfirmationModalOpen(false) & navigate('/')}>Close</button>
-                        {/* Resend Confirmation Email button */}
-                        <button type="button" onClick={requestEmailVerification}>Resend Confirmation Email</button>
-                    </div>
-                </div>
-            </Modal>
 
             {/* Footer component */}
             <Footer />
