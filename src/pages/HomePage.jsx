@@ -59,7 +59,14 @@ export default function HomePage() {
                     </div>
 
                     <div className='other-profiles-card'>
-
+                        <div className='title'>Accounts:</div>
+                        <div className='other-profiles-container'>
+                            <div className='other-profile'>
+                                <div className='other-profile-image'><img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" /></div>
+                                <p className='name'>The Nordic Crew</p>
+                            </div>
+                        </div>
+                        <div className='add-account'><a href=""><Icon icon="icon-park-outline:add" /> Add account</a></div>
                     </div>
 
                 </section>
@@ -75,7 +82,26 @@ export default function HomePage() {
                 <section className='recommendations' id='recommendations'>
 
                     <div className='add-to-your-feed-card'>
-
+                        <div className='title'>Add to your feed: <Icon icon="tabler:info-square" /></div>
+                        <div className='person-to-follow'>
+                            <div className='person'>
+                                <div className='person-image-name-container'>
+                                    <div className='person-to-follow-image'><img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" /></div>
+                                    <p className='name'>Name Me</p>
+                                </div>
+                                <div className='follow-button'><a href=""><Icon icon="icon-park-outline:add" /> Follow</a></div>
+                            </div>
+                        </div>
+                        <div className='person-to-follow'>
+                            <div className='person'>
+                                <div className='person-image-name-container'>
+                                    <div className='person-to-follow-image'><img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" /></div>
+                                    <p className='name'>Name Me</p>
+                                </div>
+                                <div className='follow-button'><a href=""><Icon icon="icon-park-outline:add" /> Follow</a></div>
+                            </div>
+                        </div>
+                        <div className='view-all-recommendations'><a href="">View all recommendations <Icon icon="typcn:arrow-right" /></a></div>
                     </div>
 
                     <Footer />
