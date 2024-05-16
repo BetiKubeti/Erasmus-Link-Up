@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import '../src/App.jsx';
+
+// Styles import
 import './assets/styles/NavStyle.css';
 import './assets/styles/HomePageStyle.css';
 import './assets/styles/RegistrationPageStyle.css';
@@ -8,6 +10,7 @@ import './assets/styles/SignInPageStyle.css';
 // import './assets/styles/ProfilePageStyle.css';
 import './assets/styles/FooterStyle.css';
 import './assets/styles/SearchBarStyle.css';
+import './assets/styles/NetworkPageStyle.css';
 
 import HomePage from "./pages/HomePage.jsx";
 import RegistrationPage from './pages/RegistrationPage';
