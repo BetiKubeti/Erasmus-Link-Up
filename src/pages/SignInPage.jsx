@@ -49,9 +49,10 @@ const SignInForm = () => {
         }
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user; // Obtain the user object from the result
             // Handle successful sign-in, e.g., redirect the user
-            navigate('/');
+            navigate(`/${user.uid}`); // Use user.uid instead of user?.uid
         } catch (error) {
             // Handle sign-in error, e.g., display an error message
             console.error('Sign-in error:', error);

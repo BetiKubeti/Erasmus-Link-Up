@@ -25,7 +25,7 @@ const Nav = () => {
                 {/* Logo section with a link to the home page */}
                 <div className='logo-container'>
                     <div className='logo'>
-                        <NavLink to="/">
+                        <NavLink to={`/${user?.uid}`}>
                             <img src={Logo} alt="Erasmus Link Up Logo" />
                         </NavLink>
                     </div>
@@ -37,14 +37,12 @@ const Nav = () => {
                 {/* Contents section with navigation links */}
                 <div className='contents'>
                     {/* Home link with active class based on the current location */}
-                    <NavLink to="/" className={location.pathname === '/' ? 'active-navbar-link' : 'nav-link'}>Home</NavLink>
+                    <NavLink to={`/${user?.uid}`} className={location.pathname === `/${user?.uid}` ? 'active-navbar-link' : 'nav-link'}>Home</NavLink>
                     {/* Discover Businesses link with active class based on the current location */}
-                    <NavLink to="/network" className={location.pathname === '/network' ? 'active-navbar-link' : 'nav-link'}>Network</NavLink>
-                    <NavLink to="/toolbox" className={location.pathname === '/toolbox' ? 'active-navbar-link' : 'nav-link'}>ToolBox</NavLink>
+                    <NavLink to={`/${user?.uid}/network`} className={location.pathname === `/${user?.uid}/network` ? 'active-navbar-link' : 'nav-link'}>Network</NavLink>
+                    <NavLink to={`/${user?.uid}/toolbox`} className={location.pathname === `/${user?.uid}/toolbox` ? 'active-navbar-link' : 'nav-link'}>ToolBox</NavLink>
                     {/* Render ProfileButton when the user is signed in */}
-                    {user && <ProfileButton />}
-                    {/* Render SignUpLogInButton when the user is not signed in */}
-                    
+                    <ProfileButton />
                 </div>
             </div>
         </nav>

@@ -4,11 +4,16 @@ import Modal from 'react-modal';
 import { auth, firestore } from '../firebase';
 import { collection, getDocs, deleteDoc, query, where } from 'firebase/firestore';
 
+// Image import
+import DefaultProfileImage from '../assets/images/default-profile-image.jpg';
+
 // Set the root element for the modal
 Modal.setAppElement('#root');
 
 // ProfileButton component
 export default function ProfileButton() {
+
+    const [profileData, setProfileData] = useState(null);
     // State for dropdown visibility and delete confirmation modal
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [isDeleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
@@ -91,13 +96,8 @@ export default function ProfileButton() {
     return (
         <div className="profile-button" id="profileButton">
             {/* Toggle button for the dropdown */}
-            <div id="profileButtonToggle" onClick={toggleDropdown}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
-                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2Z" />
-                        <path d="M4.271 18.346S6.5 15.5 12 15.5s7.73 2.846 7.73 2.846M12 12a3 3 0 1 0 0-6a3 3 0 0 0 0 6Z" />
-                    </g>
-                </svg>
+            <div className='profile-button-toggle' id="profileButtonToggle" onClick={toggleDropdown}>
+                <img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" />
             </div>
             {/* Dropdown content */}
             {isDropdownOpen && (
@@ -106,8 +106,6 @@ export default function ProfileButton() {
                     <NavLink className='dropdown-button' id='dropdown-button' to="/profile" onClick={() => setDropdownOpen(false)}>Profile</NavLink>
                     {/* Button to sign out */}
                     <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}>Sign Out</button>
-                    {/* Button to initiate account deletion */}
-                    <button className='dropdown-button' id='dropdown-button' onClick={handleDeleteAccount}>Delete Account</button>
                 </div>
             )}
             {/* Delete confirmation modal */}

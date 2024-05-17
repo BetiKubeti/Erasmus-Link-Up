@@ -1,0 +1,10 @@
+.profile-button {
+    cursor: pointer;
+    width: 56px;
+    border-radius: 100px;
+}
+
+.profile-button .profile-button-toggle img {
+    width: 100%;
+    border-radius: 100px;
+}

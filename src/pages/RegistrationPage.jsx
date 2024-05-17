@@ -108,11 +108,10 @@ const RegistrationForm = () => {
         // Proceed with registration if email and company name are not already used.
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
             await updateProfile(userCredential.user, {
                 displayName: name,
             });
-
-            await sendEmailVerification(auth.currentUser);
 
             // Add user data to Firestore
             const userData = {
@@ -122,9 +121,7 @@ const RegistrationForm = () => {
                 registrationDate: serverTimestamp(),
             };
             const docRef = await addDoc(collection(firestore, 'users'), userData);
-
-            // Navigate to the new user's profile page using the document ID
-            navigate(`/${docRef.id}`);
+            navigate(`/${user.uid}`);
         } catch (error) {
             console.error('Registration error:', error);
             // Handle registration error, e.g., display an error message.
@@ -135,16 +132,6 @@ const RegistrationForm = () => {
     const checkIfEmailExists = async (email) => {
         const querySnapshot = await getDocs(query(collection(firestore, 'users'), where('email', '==', email)));
         return !querySnapshot.empty;
-    };
-
-    const requestEmailVerification = async () => {
-        try {
-            await sendEmailVerification(auth.currentUser);
-            setEmailConfirmationModalOpen(true);
-        } catch (error) {
-            console.error('Email verification request error:', error);
-            // Handle the error, e.g., display an error message.
-        }
     };
 
     return (
