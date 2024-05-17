@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, firestore } from '../firebase';
-import { doc, getDoc, getDocs, collection } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { Icon } from '@iconify/react';
 
+// Images import
 import DefaultProfileImage from '../assets/images/default-profile-image.jpg';
 
+// Components import
 import Nav from '../components/Nav';
 import Footer from '../components/FooterSignUpLogIn';
+import ModalComponent from '../components/NetworkPageSeeAllProfilesModal'
 
 export default function NetworkPage() {
-
     const [user] = useAuthState(auth);
     const [persons, setPersons] = useState([]);
     const [companies, setCompanies] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalProfiles, setModalProfiles] = useState([]);
 
     useEffect(() => {
         const fetchUserProfiles = async () => {
@@ -24,22 +28,24 @@ export default function NetworkPage() {
             const otherUsers = allUsers.filter(userObj => userObj.uid !== currentUserUid);
 
             // Separate users into persons and companies
-            const personsArray = otherUsers.filter(profile => profile.userType === 'person');
-            const companiesArray = otherUsers.filter(profile => profile.userType === 'company');
+            const personsArray = otherUsers.filter(profile => profile.userType === 'person').slice(0, 10); // Limit to 10
+            const companiesArray = otherUsers.filter(profile => profile.userType === 'company').slice(0, 10); // Limit to 10
 
-            if (personsArray.length > 0) {
-                setPersons(personsArray);
-            }
+            // Randomize the order of persons and companies
+            const shuffledPersons = personsArray.sort(() => Math.random() - 0.5);
+            const shuffledCompanies = companiesArray.sort(() => Math.random() - 0.5);
 
-            if (companiesArray.length > 0) {
-                setCompanies(companiesArray);
-            } else {
-                console.log("No other users found!");
-            }
+            setPersons(shuffledPersons);
+            setCompanies(shuffledCompanies);
         };
 
         fetchUserProfiles();
     }, [user]);
+
+    const handleSeeAllClick = (profiles) => {
+        setModalProfiles(profiles);
+        setIsModalOpen(true);
+    };
 
     return (
         <>
@@ -48,7 +54,7 @@ export default function NetworkPage() {
             <section className='people-cards network-cards'>
                 <div className='title'>
                     <p>Personal Profiles you might be interested in:</p>
-                    <a href="">See All</a>
+                    <a onClick={() => handleSeeAllClick(persons)}>See All</a>
                 </div>
                 <div className='cards-container'>
                     {persons.map((profile, index) => (
@@ -73,7 +79,7 @@ export default function NetworkPage() {
             <section className='companies-cards network-cards'>
                 <div className='title'>
                     <p>Company Profiles you might be interested in:</p>
-                    <a href="">See All</a>
+                    <a onClick={() => handleSeeAllClick(companies)}>See All</a>
                 </div>
                 <div className='cards-container'>
                     {companies.map((profile, index) => (
@@ -94,6 +100,11 @@ export default function NetworkPage() {
                     ))}
                 </div>
             </section>
+
+            {/* Modal Component */}
+            {isModalOpen && (
+                <ModalComponent profiles={modalProfiles} onClose={() => setIsModalOpen(false)} />
+            )}
 
             <Footer />
         </>

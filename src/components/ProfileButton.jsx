@@ -31,12 +31,7 @@ export default function ProfileButton() {
             console.error('Log out error:', error);
         }
     };
-
-    // Function to initiate the delete account process
-    const handleDeleteAccount = () => {
-        setDeleteConfirmationOpen(true);
-    };
-
+    
     // Confirm account deletion function
     const confirmDeleteAccount = async () => {
         const user = auth.currentUser;
