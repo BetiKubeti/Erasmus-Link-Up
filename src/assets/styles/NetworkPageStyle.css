@@ -26,6 +26,7 @@
 .network-cards .title a:hover {
     color: #034EA2;
     border-bottom: 1px solid #034EA2;
+    cursor: pointer;
 }
 
 .network-cards .cards-container {

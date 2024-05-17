@@ -18,12 +18,3 @@
     max-width: 600px;
     width: 90%;
 }
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    /* Prevent scrolling when the modal is open */
-}
