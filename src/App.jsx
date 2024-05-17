@@ -22,12 +22,13 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<RegistrationPage />} />
           <Route path="/login" element={<SignInPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/network" element={<NetworkPage />} />
-          <Route path="/toolbox" element={<ProfilePage />} />
+          <Route path="/:userid" element={<HomePage />}>
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="network" element={<NetworkPage />} />
+            <Route path="toolbox" element={<ProfilePage />} />
+          </Route>
         </Routes>
     </Router>
   );

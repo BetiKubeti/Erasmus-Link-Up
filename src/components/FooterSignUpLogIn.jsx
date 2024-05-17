@@ -19,7 +19,7 @@ const FooterSignUpLogIn = () => {
                             </NavLink>
                         </div>
                     </div>
-                    <p>&copy; 2024 ErasmusLinkUp All Rights Reserved </p>
+                    <p className='copyright-text' >&copy; 2024 ErasmusLinkUp All Rights Reserved </p>
                 </div>
                 <div className='footer-column'>
                     <a href="">About</a>
@@ -32,7 +32,7 @@ const FooterSignUpLogIn = () => {
                     <a href="">Cookies Policy</a>
                 </div>
                 <div className='footer-column'>
-                    <p>Get to know us:</p>
+                    <p className='media-subtitle'>Get to know us:</p>
                     <a href=""><Icon icon="brandico:facebook-rect" style={{ color:'#034EA2' }} /></a>
                     <a href=""><Icon icon="skill-icons:instagram" /></a>
                 </div>

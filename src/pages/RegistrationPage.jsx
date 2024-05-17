@@ -106,17 +106,8 @@ const RegistrationForm = () => {
         }
 
         // Proceed with registration if email and company name are not already used.
-        const userData = {
-            userType,
-            name,
-            email,
-            registrationDate: serverTimestamp(),
-        };
-
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-            // Update the user's display name
             await updateProfile(userCredential.user, {
                 displayName: name,
             });
@@ -124,11 +115,16 @@ const RegistrationForm = () => {
             await sendEmailVerification(auth.currentUser);
 
             // Add user data to Firestore
+            const userData = {
+                userType,
+                name,
+                email,
+                registrationDate: serverTimestamp(),
+            };
             const docRef = await addDoc(collection(firestore, 'users'), userData);
-            console.log('Registration and document creation successful. Document ID:', docRef.id);
 
-            // Show the email confirmation modal
-            navigate(`/`);
+            // Navigate to the new user's profile page using the document ID
+            navigate(`/${docRef.id}`);
         } catch (error) {
             console.error('Registration error:', error);
             // Handle registration error, e.g., display an error message.
