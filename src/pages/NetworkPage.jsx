@@ -18,6 +18,7 @@ export default function NetworkPage() {
     const [companies, setCompanies] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalProfiles, setModalProfiles] = useState([]);
+    const [modalInfo, setModalInfo] = useState({ isModalOpen: false, userType: null });
 
     useEffect(() => {
         const fetchUserProfiles = async () => {
@@ -42,9 +43,9 @@ export default function NetworkPage() {
         fetchUserProfiles();
     }, [user]);
 
-    const handleSeeAllClick = (profiles) => {
+    const handleSeeAllClick = (profiles, userType) => {
         setModalProfiles(profiles);
-        setIsModalOpen(true);
+        setModalInfo({ isModalOpen: true, userType });
     };
 
     return (
@@ -54,7 +55,7 @@ export default function NetworkPage() {
             <section className='people-cards network-cards'>
                 <div className='title'>
                     <p>Personal Profiles you might be interested in:</p>
-                    <a onClick={() => handleSeeAllClick(persons)}>See All</a>
+                    <a onClick={() => handleSeeAllClick(persons, 'person')}>See All</a>
                 </div>
                 <div className='cards-container'>
                     {persons.map((profile, index) => (
@@ -63,7 +64,7 @@ export default function NetworkPage() {
                                 <img src={profile.profileImageURL || DefaultProfileImage} alt="Profile" />
                             </div>
                             <div className='profile-name'>{profile.name}</div>
-                            <a className='view-profile-button' href="">{profile.userType === 'person' ? 'Personal Profile' : ''}</a>
+                            <a className='view-profile-button' href="">{profile.userType === 'person' ? 'personal profile' : 'company profile'}</a>
                             <div className='mutual-connections-container'>
                                 <div className='mutual-connections'>
                                     <p>Mutual connections:</p>
@@ -79,7 +80,7 @@ export default function NetworkPage() {
             <section className='companies-cards network-cards'>
                 <div className='title'>
                     <p>Company Profiles you might be interested in:</p>
-                    <a onClick={() => handleSeeAllClick(companies)}>See All</a>
+                    <a onClick={() => handleSeeAllClick(companies, 'company')}>See All</a>
                 </div>
                 <div className='cards-container'>
                     {companies.map((profile, index) => (
@@ -88,7 +89,7 @@ export default function NetworkPage() {
                                 <img src={profile.profileImageURL || DefaultProfileImage} alt="Profile" />
                             </div>
                             <div className='profile-name'>{profile.name}</div>
-                            <a className='view-profile-button' href="">{profile.userType === 'company' ? 'Company Profile' : ''}</a>
+                            <a className='view-profile-button' href="">{profile.userType === 'company' ? 'company profile' : 'personal profile'}</a>
                             <div className='mutual-connections-container'>
                                 <div className='mutual-connections'>
                                     <p>Mutual connections:</p>
@@ -102,8 +103,8 @@ export default function NetworkPage() {
             </section>
 
             {/* Modal Component */}
-            {isModalOpen && (
-                <ModalComponent profiles={modalProfiles} onClose={() => setIsModalOpen(false)} />
+            {modalInfo.isModalOpen && (
+                <ModalComponent profiles={modalProfiles} onClose={() => setModalInfo({ isModalOpen: false, userType: null })} userType={modalInfo.userType} />
             )}
 
             <Footer />
