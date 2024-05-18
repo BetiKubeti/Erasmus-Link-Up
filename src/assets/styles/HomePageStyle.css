@@ -75,18 +75,12 @@ body {
 }
 
 
-.current-profile-card .saved-items {
+.current-profile-card .saved-items-button {
     border: 1px solid #ADB0B7;
     border-radius: 16px;
     width: 60%;
     padding: 8px 16px;
     margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.current-profile-card .saved-items a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,8 +90,23 @@ body {
     font-size: 20px;
 }
 
-.current-profile-card .saved-items a svg{
+.current-profile-card .saved-items-button span {
+    border-bottom: 1px solid transparent;
+    transition: .2s ease;
+}
+
+.current-profile-card .saved-items-button:hover span {
+    color: #034EA2;
+    border-bottom: 1px solid #034EA2;
+}
+
+.current-profile-card .saved-items-button svg{
     font-size: 28px;
+    transition: .2s ease;
+}
+
+.current-profile-card .saved-items-button:hover svg {
+    color: #034EA2;
 }
 
 
@@ -149,18 +158,12 @@ body {
     font-weight: 400px;
 }
 
-.other-profiles-card .add-account {
+.other-profiles-card .add-account-button {
     border: 1px solid #ADB0B7;
     border-radius: 16px;
     width: 60%;
     padding: 8px 16px;
     margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.other-profiles-card .add-account a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,8 +173,23 @@ body {
     font-size: 20px;
 }
 
-.other-profiles-card .add-account a svg {
+.other-profiles-card .add-account-button span {
+    border-bottom: 1px solid transparent;
+    transition: .2s ease;
+}
+
+.other-profiles-card .add-account-button:hover span {
+    color: #034EA2;
+    border-bottom: 1px solid #034EA2;
+}
+
+.other-profiles-card .add-account-button svg {
     font-size: 28px;
+    transition: .2s ease;
+}
+
+.other-profiles-card .add-account-button:hover svg {
+    color: #034EA2;
 }
 
 /* feed cards and infinite scroll */
@@ -196,6 +214,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-width: 304px;
+    max-width: 304px;
 }
 
 .add-to-your-feed-card .title {
@@ -213,7 +232,6 @@ body {
 }
 
 .add-to-your-feed-card .person-to-follow {
-    border-top: 1px solid #ADB0B7;
     width: 100%;
 }
 
@@ -222,6 +240,7 @@ body {
 }
 
 .add-to-your-feed-card .person-to-follow .person {
+    border-top: 1px solid #ADB0B7;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -255,9 +274,6 @@ body {
     border: 1px solid #ADB0B7;
     border-radius: 12px;
     padding: 8px 16px;
-}
-
-.add-to-your-feed-card .person-to-follow .person .follow-button a {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -265,6 +281,24 @@ body {
     font-weight: 400;
     text-decoration: none;
     color: #000;
+}
+
+.add-to-your-feed-card .person-to-follow .person .follow-button span {
+    border-bottom: 1px solid transparent;
+    transition: .2s ease;
+}
+
+.add-to-your-feed-card .person-to-follow .person .follow-button:hover span {
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
+}
+
+.add-to-your-feed-card .person-to-follow .person .follow-button svg {
+    transition: .2s ease;
+}
+
+.add-to-your-feed-card .person-to-follow .person .follow-button:hover svg {
+    color: #034EA2;
 }
 
 .add-to-your-feed-card .view-all-recommendations {
