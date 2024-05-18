@@ -71,7 +71,7 @@ export default function NetworkPage() {
                                     <p className='number-of-mutual-connections'>56</p>
                                 </div>
                             </div>
-                            <div className='follow-button'><a href=""><Icon icon="icon-park-outline:add" /> Follow</a></div>
+                            <a href="" className='follow-button'><Icon icon="icon-park-outline:add" /> <span>Follow</span></a>
                         </div>
                     ))}
                 </div>
@@ -96,7 +96,7 @@ export default function NetworkPage() {
                                     <p className='number-of-mutual-connections'>56</p>
                                 </div>
                             </div>
-                            <div className='follow-button'><a href=""><Icon icon="icon-park-outline:add" /> Follow</a></div>
+                            <a href="" className='follow-button'><Icon icon="icon-park-outline:add" /> <span>Follow</span></a>
                         </div>
                     ))}
                 </div>

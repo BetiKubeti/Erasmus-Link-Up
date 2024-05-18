@@ -43,7 +43,7 @@ const NetworkPageSeeAllProfilesModal = ({ profiles, onClose, userType }) => {
                     <h2>{title}</h2>
                     <Icon icon="carbon:close-filled" onClick={onClose} />
                 </div>
-                <div className='modal-cards-container'>
+                <div className='modal-cards-container network-cards'>
                     {shuffledProfiles.map((profile, index) => (
                         <div key={index} className='card'>
                             <div className='profile-picture'>
@@ -57,7 +57,7 @@ const NetworkPageSeeAllProfilesModal = ({ profiles, onClose, userType }) => {
                                     <p className='number-of-mutual-connections'>56</p>
                                 </div>
                             </div>
-                            <div className='follow-button'><a href=""><Icon icon="icon-park-outline:add" /> Follow</a></div>
+                            <a href="" className='follow-button'><Icon icon="icon-park-outline:add" /> <span>Follow</span></a>
                         </div>
                     ))}
                 </div>

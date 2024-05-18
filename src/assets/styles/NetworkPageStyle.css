@@ -68,6 +68,14 @@
     font-size: 20px;
     text-decoration: none;
     color: #606674;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.network-cards .card .view-profile-button:hover {
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
 }
 
 .network-cards .card .mutual-connections-container {
@@ -98,20 +106,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.network-cards .card .follow-button a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-decoration: none;
     color: #000;
     gap: 8px;
     font-size: 20px;
+    
 }
 
-.network-cards .card .follow-button a svg {
+.network-cards .card .follow-button span {
+    border-bottom: 1px solid transparent;
+    transition: .2s ease;
+}
+
+.network-cards .card .follow-button:hover span {
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
+}
+
+.network-cards .card .follow-button svg {
     font-size: 28px;
+    transition: .2s ease;
+}
+
+.network-cards .card .follow-button:hover svg {
+    color: #034EA2;
 }
 
 
@@ -135,7 +153,7 @@
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     max-width: 69%;
-    height: 81%;
+    height: 85%;
     width: 90%;
 }
 
@@ -164,7 +182,7 @@
     flex-wrap: wrap;
     gap: 20px;
     overflow: hidden;
-    margin: 0 4px;
+    margin: 20px 4px;
     padding: 30px;
     height: 500px;
     overflow-y: scroll;
@@ -182,112 +200,11 @@
     background: #f1f1f1;
 }
 
-
-.modal-content .title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-}
-
-.modal-content .title p,
-.modal-content .title a {
-    text-decoration: none;
-    color: #000;
-    font-size: 24px;
-    border-bottom: 1px solid transparent;
-    transition: .2s ease;
-}
-
-.modal-content .title a:hover {
-    color: #034EA2;
-    border-bottom: 1px solid #034EA2;
-    cursor: pointer;
-}
-
 .modal-content .cards-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     gap: 20px;
-}
-
-
-.modal-content .card {
-    border-radius: 16px;
-    background-color: #FAFAFA;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 304px;
-    max-width: 304px;
-    height: 265px;
-}
-
-.modal-content .card .profile-picture {
-    margin-top: 12px;
-    width: 72px;
-}
-
-.modal-content .card .profile-picture img {
-    border-radius: 100px;
-    width: 100%;
-}
-
-.modal-content .card .profile-name {
-    font-size: 24px;
-    padding: 0 48px 0;
-}
-
-.modal-content .card .view-profile-button {
-    font-size: 20px;
-    text-decoration: none;
-    color: #606674;
-}
-
-.modal-content .card .mutual-connections-container {
-    border-top: 1px solid #606674;
-    border-bottom: 1px solid #606674;
-    width: 100%;
-    margin: 12px 0;
-}
-
-.modal-content .card .mutual-connections-container .mutual-connections {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px 16px;
-    font-size: 20px;
-}
-
-.modal-content .card .mutual-connections-container .mutual-connections .number-of-mutual-connections {
-    color: #034EA2;
-}
-
-.modal-content .card .follow-button {
-    border: 1px solid #ADB0B7;
-    border-radius: 16px;
-    width: 60%;
-    padding: 8px 16px;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content .card .follow-button a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    gap: 8px;
-    font-size: 20px;
-}
-
-.modal-content .card .follow-button a svg {
-    font-size: 28px;
 }
 
 @media screen and (min-width: 1920px) {
@@ -298,7 +215,7 @@
 
     .modal-content {
         max-width: 55%;
-        height: 71%;
+        height: 74%;
     }
 
 }
