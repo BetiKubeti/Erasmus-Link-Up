@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { auth, firestore } from '../firebase';
@@ -13,6 +14,8 @@ Modal.setAppElement('#root');
 // ProfileButton component
 export default function ProfileButton() {
 
+    const [user] = useAuthState(auth);
+
     const [profileData, setProfileData] = useState(null);
     // State for dropdown visibility and delete confirmation modal
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -26,7 +29,7 @@ export default function ProfileButton() {
         try {
             await auth.signOut();
             // Navigate to the home page after logout
-            navigate('/');
+            navigate('/login');
         } catch (error) {
             console.error('Log out error:', error);
         }
@@ -98,7 +101,7 @@ export default function ProfileButton() {
             {isDropdownOpen && (
                 <div className="profile-dropdown" id="profileDropdown">
                     {/* Link to the user's profile */}
-                    <NavLink className='dropdown-button' id='dropdown-button' to="/profile" onClick={() => setDropdownOpen(false)}>Profile</NavLink>
+                    <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}>Profile</NavLink>
                     {/* Button to sign out */}
                     <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}>Sign Out</button>
                 </div>

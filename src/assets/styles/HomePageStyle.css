@@ -27,7 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 304px;
+    width: 304px;
 }
 
 .current-profile-card .profile-picture {
@@ -119,7 +119,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 304px;
+    width: 304px;
 }
 
 .other-profiles-card .title {
@@ -213,8 +213,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 304px;
-    max-width: 304px;
+    width: 304px;
 }
 
 .add-to-your-feed-card .title {
