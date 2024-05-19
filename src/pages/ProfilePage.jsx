@@ -64,7 +64,7 @@ export default function ProfilePage() {
                                     <p>
                                         Share that you're looking for free trip deals with various educational options.
                                     </p>
-                                    <a href="">Get started now!</a>
+                                    <a href="" className='get-started-now-button'>Get started now!</a>
                                 </div>
                                 <Icon icon="carbon:close-filled" />
                             </div>
@@ -74,7 +74,7 @@ export default function ProfilePage() {
                                     <p>
                                         Share that you're looking for applicants to join your traveling opportunities.
                                     </p>
-                                    <a href="">Get started now!</a>
+                                    <a href="" className='get-started-now-button'>Get started now!</a>
                                 </div>
                                 <Icon icon="carbon:close-filled" />
                             </div>
@@ -82,7 +82,32 @@ export default function ProfilePage() {
                     </div>
 
                     <div className='statistics-card'>
+                        <div className='title-container'>
+                            <div className='title'>
+                                <h2>Statistics:</h2>
+                                <Icon icon="tabler:info-square" />
+                            </div>
+                            <p className='subtitle'>Private to you</p>
+                        </div>
 
+                        <div className='profile-statistics'>
+                            <div className='statistics-container'>
+                                <Icon icon="bi:people-fill" />
+                                <div className='text'>
+                                    <h4>20 profile views</h4>
+                                    <p>This statistic reflects how many users have opened and seen your profile in the previous month.</p>
+                                </div>
+                            </div>
+
+                            <div className='statistics-container'>
+                                <Icon icon="gg:search" />
+                                <div className='text'>
+                                    <h4>17 search appearances</h4>
+                                    <p>This statistic reflects how your profile appeared in other users search results.</p>
+                                </div>
+                            </div>
+                        </div>
+                    
                     </div>
 
                 </section>
