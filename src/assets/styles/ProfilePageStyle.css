@@ -1,0 +1,141 @@
+.profilepage-container {
+    margin-top: 144px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0 56px;
+    gap: 16px;
+}
+
+.profile-scroll {
+    width: 100%;
+}
+
+.profile-scroll .profile-top-section-card {
+    background-color: #fafafa;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.profile-scroll .profile-top-section-card .info-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    border-bottom: 1px solid #606674;
+}
+
+.profile-scroll .profile-top-section-card .profile-picture {
+    margin-top: 12px;
+    width: 104px;
+}
+
+.profile-scroll .profile-top-section-card .profile-picture img {
+    border-radius: 100px;
+    width: 100%;
+}
+
+.general-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.name-contact-section .view-contact-information-button {
+    font-size: 20px;
+    color: #034EA2;
+}
+
+.name-and-edit-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-and-edit-section .profile-name {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.name-and-edit-section .buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.name-and-edit-section .buttons-container button {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+    color: #000;
+    border: 1px solid #ADB0B7;
+    background: #FAFAFA;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.name-and-edit-section .buttons-container button span {
+    border-bottom: 1px solid transparent;
+    transition: .2s ease;
+    font-size: 16px;
+}
+
+.name-and-edit-section .buttons-container button:hover span{
+    color: #034EA2;
+    border-bottom: 1px solid #034EA2;
+}
+
+.name-and-edit-section .buttons-container button svg {
+    font-size: 24px;
+    transition: .2s ease;
+}
+
+.name-and-edit-section .buttons-container button:hover svg {
+    font-size: 24px;
+    color: #034EA2;
+}
+
+.number-of-followers-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.number-of-followers-section p {
+    font-size: 20px;
+}
+
+
+/* The recommendations section of the card where the name and picture are */
+
+
+
+.profile-update-recommendations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.profile-update-recommendations .recommendation-container {
+    border: 1px solid #ADB0B7;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    width: 44%;
+    height: fit-content;
+}
+
+.profile-update-recommendations .recommendation-container .text {
+    font-size: 20px;
+    width: 80%;
+}
+
+.profile-update-recommendations .recommendation-container svg {
+    font-size: 30px;
+    cursor: pointer;
+}

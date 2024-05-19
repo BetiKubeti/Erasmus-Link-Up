@@ -48,7 +48,7 @@ export default function HomePage() {
                             <img src={profileData?.profileImageURL || DefaultProfileImage } alt="Profile" />
                         </div>
                         <div className='profile-name'>{profileData?.name}</div>
-                        <a className='view-profile-button' href="">view profile</a>
+                        <a className='view-profile-button' href={`/${user?.uid}/profile`}>view profile</a>
                         <div className='followers-container'>
                             <div className='followers'>
                                 <p>Followers:</p>

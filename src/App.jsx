@@ -7,7 +7,7 @@ import './assets/styles/NavStyle.css';
 import './assets/styles/HomePageStyle.css';
 import './assets/styles/RegistrationPageStyle.css';
 import './assets/styles/SignInPageStyle.css';
-// import './assets/styles/ProfilePageStyle.css';
+import './assets/styles/ProfilePageStyle.css';
 import './assets/styles/FooterStyle.css';
 import './assets/styles/SearchBarStyle.css';
 import './assets/styles/NetworkPageStyle.css';

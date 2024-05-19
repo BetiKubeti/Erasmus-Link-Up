@@ -3,7 +3,7 @@ body {
 }
 
 .homepage-container {
-    margin-top: 168px;
+    margin-top: 144px;
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
@@ -50,6 +50,13 @@ body {
     font-size: 20px;
     text-decoration: none;
     color: #606674;
+    border-bottom: 1px solid transparent;
+    transition: .2s ease;
+}
+
+.current-profile-card .view-profile-button:hover {
+    color: #034EA2;
+    border-bottom: 1px solid #034EA2;
 }
 
 
