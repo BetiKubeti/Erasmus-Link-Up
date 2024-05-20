@@ -77,6 +77,7 @@ export default function ProfileButton() {
     const closeProfileDropdown = () => {
         setDropdownOpen(false);
         setIsUserLoggingOut(false);
+        setIsSettingsAndPrivacyOpen(false);
     };
 
     // Toggle user logout
@@ -179,11 +180,10 @@ export default function ProfileButton() {
                                 </div>
                                 <Icon icon="carbon:close-filled" onClick={closeProfileDropdown} />
                             </div>
-                            <div className='logout-question'>
-                                <p><b>{user?.displayName}</b>, are you sure that you want to Log out from your ErasmusLinkUp profile?</p>
-                            </div>
                             <div className='profile-dropdown-buttons-container'>
-                                <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}><span>Continue Log Out</span></button>
+                                <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}><Icon icon="solar:settings-bold" /> Settings</NavLink>
+                                <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}><Icon icon="material-symbols:lock" /> Privacy Center</NavLink>
+                                <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}><Icon icon="bx:book" /> Activity Log</NavLink>
                             </div>
                         </div>
                     </div>

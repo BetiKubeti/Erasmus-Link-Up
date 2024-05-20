@@ -41,6 +41,7 @@
 
 .profile-dropdown .title-container .profile-name-container svg {
     font-size: 24px;
+    cursor: pointer;
 }
 
 .profile-dropdown .title-container .view-all-profiles-button {
@@ -153,6 +154,8 @@
     color: #034EA2;
 }
 
+/* Settings and privacy dropdown */
+
 .settings-and-privacy-dropdown {
     position: absolute;
     right: 0;
@@ -162,4 +165,57 @@
     border-radius: 12px;
     z-index: 10;
     width: 320px;
+}
+
+.settings-and-privacy-dropdown .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    cursor: default;
+}
+
+.settings-and-privacy-dropdown .title-container svg {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.settings-and-privacy-dropdown .title-container .go-back-container {
+    display: flex;
+    align-items: center;
+}
+
+.settings-and-privacy-dropdown .title-container .go-back-container h2 {
+    font-size: 20px;
+}
+
+.settings-and-privacy-dropdown .go-back-container svg {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.profile-dropdown .profile-dropdown-buttons-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-and-privacy-dropdown .profile-dropdown-buttons-container .dropdown-button {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid #606674;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.settings-and-privacy-dropdown .profile-dropdown-buttons-container .dropdown-button:last-child {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.settings-and-privacy-dropdown .profile-dropdown-buttons-container .dropdown-button:hover {
+    background-color: #adb0b7;
 }
