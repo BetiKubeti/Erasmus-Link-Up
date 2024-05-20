@@ -10,7 +10,7 @@ import DefaultProfileImage from '../assets/images/default-profile-image.jpg';
 // Components import
 import Nav from '../components/Nav';
 import Footer from '../components/FooterSignUpLogIn';
-import ModalComponent from '../components/NetworkPageSeeAllProfilesModal'
+import NetworkPageSeeAllProfilesModal from '../components/NetworkPageSeeAllProfilesModal'
 
 export default function NetworkPage() {
     const [user] = useAuthState(auth);
@@ -104,7 +104,7 @@ export default function NetworkPage() {
 
             {/* Modal Component */}
             {modalInfo.isModalOpen && (
-                <ModalComponent profiles={modalProfiles} onClose={() => setModalInfo({ isModalOpen: false, userType: null })} userType={modalInfo.userType} />
+                <NetworkPageSeeAllProfilesModal profiles={modalProfiles} onClose={() => setModalInfo({ isModalOpen: false, userType: null })} userType={modalInfo.userType} />
             )}
 
             <Footer />

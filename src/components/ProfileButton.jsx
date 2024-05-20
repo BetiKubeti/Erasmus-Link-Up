@@ -8,6 +8,9 @@ import { Icon } from '@iconify/react';
 // Image import
 import DefaultProfileImage from '../assets/images/default-profile-image.jpg';
 
+// Components import
+import GiveFeedbackModal from './GiveFeedbackModal';
+
 // ProfileButton component
 export default function ProfileButton() {
 
@@ -19,6 +22,7 @@ export default function ProfileButton() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [isUserLoggingOut, setIsUserLoggingOut] = useState(false);
     const [isSettingsAndPrivacyOpen, setIsSettingsAndPrivacyOpen] = useState(false);
+    const [isGiveFeedbackModalOpen, setIsGiveFeedbackModalOpen] = useState(false);
     const [isDeleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
     // Hook for navigating to different routes
@@ -111,14 +115,9 @@ export default function ProfileButton() {
         }
     };
 
-    // Add event listener to handle clicks outside the dropdown
-    React.useEffect(() => {
-        document.addEventListener("click", handleDocumentClick);
-        // Remove event listener on component unmount
-        return () => {
-            document.removeEventListener("click", handleDocumentClick);
-        };
-    }, []);
+    const handleGiveFeedback = () => {
+        setIsGiveFeedbackModalOpen(!isGiveFeedbackModalOpen);
+    }
 
     // Render the ProfileButton component
     return (
@@ -143,7 +142,7 @@ export default function ProfileButton() {
                                 <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}><Icon icon="bi:person-fill" /> View Profile</NavLink>
                                 <button className='dropdown-button' id='dropdown-button' onClick={toggleSettingsAndPrivacy}><Icon icon="solar:settings-bold" /> Settings & Privacy</button>
                                 <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}`} onClick={() => setDropdownOpen(false)}><Icon icon="material-symbols:help" /> Help Center</NavLink>
-                                <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}><Icon icon="material-symbols:feedback-outline-rounded" /> Give a feedback</button>
+                                <button className='dropdown-button' id='dropdown-button' onClick={handleGiveFeedback}><Icon icon="material-symbols:feedback-outline-rounded" /> Give a feedback</button>
                                 <button className='dropdown-button' id='dropdown-button' onClick={toggleUserLogout}><Icon icon="ic:round-log-out" /> Log Out</button>
                             </div>
                         </div>
@@ -188,6 +187,12 @@ export default function ProfileButton() {
                         </div>
                     </div>
                 )}
+
+                {/* Modal Component */}
+                {isGiveFeedbackModalOpen && (
+                    <GiveFeedbackModal  onClose={() => setIsGiveFeedbackModalOpen(false)}/>
+                )}
+
             </div>
         </div>
     );
