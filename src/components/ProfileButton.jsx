@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Modal from 'react-modal';
 import { auth, firestore } from '../firebase';
 import { collection, getDocs, deleteDoc, query, where } from 'firebase/firestore';
+import { Icon } from '@iconify/react';
 
 // Image import
 import DefaultProfileImage from '../assets/images/default-profile-image.jpg';
-
-// Set the root element for the modal
-Modal.setAppElement('#root');
 
 // ProfileButton component
 export default function ProfileButton() {
@@ -47,7 +44,7 @@ export default function ProfileButton() {
             await user.delete();
 
             // Query for the document with the matching email in the 'companies' collection
-            const companyRef = collection(firestore, 'companies');
+            const companyRef = collection(firestore, 'users');
             const companyQuery = query(companyRef, where('email', '==', userEmail));
             const querySnapshot = await getDocs(companyQuery);
 
@@ -74,6 +71,10 @@ export default function ProfileButton() {
         setDropdownOpen(!isDropdownOpen);
     };
 
+    const closeProfileDropdown = () => {
+        setDropdownOpen(false);
+    };
+
     // Close dropdown when clicking outside
     const handleDocumentClick = (event) => {
         if (isDropdownOpen && !event.target.closest("#profileButton")) {
@@ -92,37 +93,34 @@ export default function ProfileButton() {
 
     // Render the ProfileButton component
     return (
-        <div className="profile-button" id="profileButton">
-            {/* Toggle button for the dropdown */}
-            <div className='profile-button-toggle' id="profileButtonToggle" onClick={toggleDropdown}>
-                <img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" />
-            </div>
-            {/* Dropdown content */}
-            {isDropdownOpen && (
-                <div className="profile-dropdown" id="profileDropdown">
-                    {/* Link to the user's profile */}
-                    <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}>Profile</NavLink>
-                    {/* Button to sign out */}
-                    <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}>Sign Out</button>
+        <div style={{ position: 'relative' }}>
+            <div className="profile-button" id="profileButton">
+                {/* Toggle button for the dropdown */}
+                <div className='profile-button-toggle' id="profileButtonToggle" onClick={toggleDropdown}>
+                    <img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" />
                 </div>
-            )}
-            {/* Delete confirmation modal */}
-            <Modal
-                isOpen={isDeleteConfirmationOpen}
-                className="custom-modal"
-                contentLabel="Delete Confirmation Modal"
-                id='pop-up'
-            >
-                <div className='pop-up-container'>
-                    <h2>Do you really want to delete your account?</h2>
-                    <div className='buttons'>
-                        {/* Button to confirm account deletion */}
-                        <button onClick={confirmDeleteAccount}>Delete</button>
-                        {/* Button to cancel account deletion */}
-                        <button onClick={cancelDeleteAccount}>Cancel</button>
+                {/* Dropdown content */}
+                {isDropdownOpen && (
+                    <div className="profile-dropdown" id="profileDropdown">
+                        <div className="dropdown-content">
+                            <div className='title-container'>
+                                <div className='profile-name-container'>
+                                    <h2 className='profile-name'>{user?.displayName}</h2>
+                                    <Icon icon="carbon:close-filled" onClick={closeProfileDropdown}/>
+                                </div>
+                                <a href="" className='view-all-profiles-button'>see all profiles</a>
+                            </div>
+                            <div className='profile-dropdown-buttons-container'>
+                                <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}/profile`} onClick={() => setDropdownOpen(false)}><Icon icon="bi:person-fill" /> View Profile</NavLink>
+                                <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}><Icon icon="solar:settings-bold" /> Settings & Privacy</button>
+                                <NavLink className='dropdown-button' id='dropdown-button' to={`/${user?.uid}`} onClick={() => setDropdownOpen(false)}><Icon icon="material-symbols:help" /> Help Center</NavLink>
+                                <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}><Icon icon="material-symbols:feedback-outline-rounded" /> Give a feedback</button>
+                                <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}><Icon icon="ic:round-log-out" /> Log Out</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </Modal>
+                )}
+            </div>
         </div>
     );
 }
