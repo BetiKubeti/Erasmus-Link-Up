@@ -17,7 +17,7 @@ import EditProfileInformationModal from '../components/EditProfileInformationMod
 export default function ProfilePage() {
     const [user] = useAuthState(auth);
     const [profileData, setProfileData] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState(''); // Step 2: Add state for selected category
+    const [selectedCategory, setSelectedCategory] = useState('my-posts'); // Step 2: Add state for selected category
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Function to handle click on My Posts button
@@ -68,10 +68,10 @@ export default function ProfilePage() {
                                         <h3 className='profile-name'>{user?.displayName}</h3>
                                         <div className='buttons-container'>
                                             <button className='edit-profile-button' onClick={() => setIsModalOpen(true)}><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
-                                            {isModalOpen && (
-                                                <EditProfileInformationModal onClose={() => setIsModalOpen(false)} />
-                                            )}
                                         </div>
+                                        {isModalOpen && (
+                                            <EditProfileInformationModal onClose={() => setIsModalOpen(false)} />
+                                        )}
                                     </div>
 
                                     <a href="" className='view-contact-information-button'>View contact information</a>

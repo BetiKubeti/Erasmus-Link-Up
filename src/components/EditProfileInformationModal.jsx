@@ -62,6 +62,31 @@ const EditProfileInformationModal = ({ onClose }) => {
                             <button><Icon icon="ph:trash-bold" /><span>Remove photo</span></button>
                         </div>
                     </div>
+                    <div className='edit-profile-name'>
+                        <h3>Edit your Name:</h3>
+                        <label className='text-input-label' htmlFor="">Full Name*</label>
+                        <input type="text" className='text-input' />
+                    </div>
+                    <div className='edit-profile-location'>
+                        <h3>Edit your Location:</h3>
+                        <label className='text-input-label' htmlFor="">Country/Region</label>
+                        <input type="text" className='text-input' />
+                    </div>
+                    <div className='edit-profile-contact-info'>
+                        <h3>Edit Contact Information:</h3>
+                        <label className='text-input-label' htmlFor="">Email*</label>
+                        <input type="email" className='text-input' />
+                        <label className='text-input-label' htmlFor="">Telephone</label>
+                        <input type="tel" className='text-input' />
+                        <label className='text-input-label' htmlFor="">Social Media</label>
+                        <input type="text" className='text-input' />
+                        <input type="text" className='text-input' />
+                        <input type="text" className='text-input' />
+                    </div>
+                </div>
+
+                <div className='submit-edit-changes-container'>
+                    <button><span>Save changes</span></button>
                 </div>
             </div>
         </div>

@@ -181,7 +181,7 @@ const RegistrationForm = () => {
                             </div>
                             {/* Input field for Company Name */}
                             <div className='input-container'>
-                                <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
+                                <input type="text" placeholder='Full Name' value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
                             {/* Display error message for Company Name */}
                             <div className='error-message'>
