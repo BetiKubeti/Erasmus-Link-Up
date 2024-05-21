@@ -41,7 +41,6 @@ export default function ProfilePage() {
                                     <div className='name-and-edit-section'>
                                         <h3 className='profile-name'>{user?.displayName}</h3>
                                         <div className='buttons-container'>
-                                            <button className='saved-items-button'><Icon icon="mdi:favorite-box-outline" /> <span>Saved items</span></button>
                                             <button className='edit-profile-button'><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
                                         </div>
                                     </div>
@@ -110,14 +109,36 @@ export default function ProfilePage() {
                     
                     </div>
 
+                    <div className='activity-card'>
+                        <div className='title-container'>
+                            <h2>Activity:</h2>
+                            <div className='buttons-container'>
+                                <button><span>Create a post</span></button>
+                                <button><span>Upload a toolbox</span></button>
+                            </div>
+                        </div>
+
+                        <div className='categories-to-view-container'>
+                            <div className='subtitle-container'>
+                                <p>Choose which category you want to view:</p>
+                            </div>
+                            <div className='buttons-container'>
+                                <button className='my-posts-button'><Icon icon="bi:postcard-heart" /> <span>My Posts</span></button>
+                                <button className='my-toolboxes-button'><Icon icon="fluent:toolbox-12-filled" /> <span>My toolboxes</span></button>
+                                <button className='saved-items-button'><Icon icon="mdi:favorite-box-outline" /> <span>Saved items</span></button>
+                            </div>
+                        </div>
+
+                        <div className='content-container'>
+
+                        </div>
+
+                    </div>
+
                 </section>
 
                 <section className='recommendations' id='recommendations'>
-
                     <AddToYourFeedCard />
-
-                    
-
                 </section>
                 
             </div>
