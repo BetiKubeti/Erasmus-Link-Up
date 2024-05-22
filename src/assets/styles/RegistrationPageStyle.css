@@ -9,6 +9,9 @@
 
 .registration-page {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .registration-page-wrap {
@@ -17,7 +20,7 @@
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 15px;
     position: relative;
-    margin: 10% 31%;
+    margin: 10% 0;
     width: 40%;
     height: fit-content;
     flex-direction: column;
