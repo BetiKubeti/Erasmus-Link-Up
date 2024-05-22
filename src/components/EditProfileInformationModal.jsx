@@ -20,7 +20,9 @@ const EditProfileInformationModal = ({ onClose }) => {
         socialMedia3: '',
     });
 
+    const [initialProfileData, setInitialProfileData] = useState(null);
     const [oldProfileImageURL, setOldProfileImageURL] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const storage = getStorage();
 
     useEffect(() => {
@@ -30,8 +32,10 @@ const EditProfileInformationModal = ({ onClose }) => {
                 const userDocRef = doc(firestore, 'users', user.uid);
                 const userDoc = await getDoc(userDocRef);
                 if (userDoc.exists()) {
-                    setProfileData(userDoc.data());
-                    setOldProfileImageURL(userDoc.data().profileImageURL);
+                    const userData = userDoc.data();
+                    setProfileData(userData);
+                    setInitialProfileData(userData);
+                    setOldProfileImageURL(userData.profileImageURL);
                 }
             }
         };
@@ -40,33 +44,28 @@ const EditProfileInformationModal = ({ onClose }) => {
 
     const handleFileChange = (event) => {
         if (event.target.files && event.target.files[0]) {
+            setIsLoading(true); // Set loading to true
             const file = event.target.files[0];
             const storageRef = ref(storage, `profilePictures/${uuidv4()}`);
             const uploadTask = uploadBytesResumable(storageRef, file);
 
             uploadTask.on('state_changed',
                 (snapshot) => {
-                    // Handle progress here if needed
+                    // Display loading icon
+                    setIsLoading(true);
                 },
                 (error) => {
                     console.error("Error uploading file:", error);
+                    setIsLoading(false); // Set loading to false in case of error
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                        // Delete the old profile image if it exists
-                        if (oldProfileImageURL) {
-                            const oldImageRef = ref(storage, oldProfileImageURL);
-                            try {
-                                await deleteObject(oldImageRef);
-                            } catch (error) {
-                                console.error("Error deleting old file:", error);
-                            }
-                        }
                         setProfileData(prevState => ({
                             ...prevState,
                             profileImageURL: downloadURL,
                         }));
                         setOldProfileImageURL(downloadURL);
+                        setIsLoading(false); // Set loading to false after upload completes
                     });
                 }
             );
@@ -110,6 +109,11 @@ const EditProfileInformationModal = ({ onClose }) => {
         }
     };
 
+    const handleClose = () => {
+        setProfileData(initialProfileData); // Reset profileData to initialProfileData
+        onClose();
+    };
+
     return (
         <div className="modal-overlay">
             <div className="modal-content">
@@ -118,13 +122,17 @@ const EditProfileInformationModal = ({ onClose }) => {
                         <h2>Edit your profile</h2>
                         <p className='subtitle'>* indicates required information</p>
                     </div>
-                    <Icon icon="carbon:close-filled" onClick={onClose} />
+                    <Icon icon="carbon:close-filled" onClick={handleClose} />
                 </div>
                 <div className='edit-profile-inputs-container'>
                     <div className='edit-profile-picture'>
                         <h3>Edit your profile picture:</h3>
                         <div className='profile-picture'>
-                            <img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" />
+                            {isLoading ? (
+                                <Icon icon="line-md:loading-loop" style={{ fontSize: '50px' }} />
+                            ) : (
+                                <img src={profileData?.profileImageURL || DefaultProfileImage} alt="Profile" />
+                            )}
                         </div>
                         <div className='buttons-container'>
                             <input type="file" id='profile-picture-input' style={{ display: 'none' }} onChange={handleFileChange} />

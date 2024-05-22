@@ -13,12 +13,14 @@ import Nav from "../components/Nav";
 import OtherProfilesCard from '../components/OtherProfilesCard';
 import AddToYourFeedCard from '../components/AddToYourFeedCard';
 import EditProfileInformationModal from '../components/EditProfileInformationModal';
+import CreatePostModal from '../components/CreatePostModal';
 
 export default function ProfilePage() {
     const [user] = useAuthState(auth);
     const [profileData, setProfileData] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('my-posts'); // Step 2: Add state for selected category
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+    const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -84,10 +86,10 @@ export default function ProfilePage() {
                                     <div className='name-and-edit-section'>
                                         <h3 className='profile-name'>{profileData?.name}</h3>
                                         <div className='buttons-container'>
-                                            <button className='edit-profile-button' onClick={() => setIsModalOpen(true)}><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
+                                            <button className='edit-profile-button' onClick={() => setIsEditProfileModalOpen(true)}><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
                                         </div>
-                                        {isModalOpen && (
-                                            <EditProfileInformationModal onClose={() => setIsModalOpen(false)} />
+                                        {isEditProfileModalOpen && (
+                                            <EditProfileInformationModal onClose={() => setIsEditProfileModalOpen(false)} />
                                         )}
                                     </div>
 
@@ -159,7 +161,7 @@ export default function ProfilePage() {
                         <div className='title-container'>
                             <h2>Activity:</h2>
                             <div className='buttons-container'>
-                                <button><span>Create a post</span></button>
+                                <button onClick={() => setIsCreatePostModalOpen(true)}><span>Create a post</span></button>
                                 <button><span>Upload a toolbox</span></button>
                             </div>
                         </div>
@@ -202,7 +204,7 @@ export default function ProfilePage() {
                                     )) :
                                     <div className='no-content'>
                                         <p>You have not uploaded any posts yet.</p>
-                                        <button><span>Create your first Post Now!</span></button>
+                                        <button onClick={() => setIsCreatePostModalOpen(true)}><span>Create your first Post Now!</span></button>
                                     </div>
                             )}
                             {selectedCategory === 'my-toolboxes' && <div>You don't have any toolboxes yet.</div>}
@@ -210,6 +212,14 @@ export default function ProfilePage() {
                         </div>
 
                     </div>
+                    {/* Conditionally render the CreatePostModal based on isCreatePostModalOpen state */}
+                    {isCreatePostModalOpen && (
+                        <CreatePostModal
+                            onClose={() => setIsCreatePostModalOpen(false)}
+                            initialProfileData={profileData}
+                            oldProfileImageURL={profileData?.profileImageURL || DefaultProfileImage}
+                        />
+                    )}
 
                 </section>
 
