@@ -590,6 +590,14 @@
     color: #034EA2;
 }
 
+.post-inputs-container .uploaded-picture {
+    width: 100%;
+}
+
+.post-inputs-container .uploaded-picture img {
+    width: 100%;
+}
+
 .submit-post-container {
     display: flex;
     align-items: center;

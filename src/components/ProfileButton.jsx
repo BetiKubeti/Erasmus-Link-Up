@@ -150,7 +150,7 @@ export default function ProfileButton() {
                         <div className="dropdown-content">
                             <div className='title-container'>
                                 <div className='profile-name-container'>
-                                    <h2 className='profile-name'>{user?.displayName}</h2>
+                                    <h2 className='profile-name'>{profileData?.name}</h2>
                                     <Icon icon="carbon:close-filled" onClick={closeProfileDropdown}/>
                                 </div>
                                 <a href="" className='view-all-profiles-button'>see all profiles</a>

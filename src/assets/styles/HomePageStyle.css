@@ -8,6 +8,7 @@ body {
     flex-grow: 1;
     justify-content: space-between;
     padding: 0 56px;
+    gap: 24px;
 }
 
 .homepage-container .profile {
@@ -206,7 +207,71 @@ body {
     color: #034EA2;
 }
 
-/* feed cards and infinite scroll */
+/* Post cards and infinite scroll */
+
+.infinite-scroll {
+    width: 100%;
+}
+
+/* Add these styles to your main CSS file */
+.post-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-author h2 {
+    margin: 0;
+}
+
+.post-author p {
+    margin: 0;
+    color: #777;
+}
+
+.post-content {
+    margin-top: 10px;
+}
+
+.post-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+}
+
+.post-actions button:hover {
+    text-decoration: underline;
+}
 
 
 /* Recommmendations section */
@@ -341,4 +406,15 @@ body {
 
 .add-to-your-feed-card .view-all-recommendations a svg {
     font-size: 36px;
+}
+
+@media screen and (min-width: 1920px) {
+    .homepage-container {
+        margin-top: 144px;
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+        padding: 0px 280px;
+        gap: 24px;
+    }
 }
