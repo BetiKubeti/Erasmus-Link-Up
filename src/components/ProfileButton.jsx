@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { auth, firestore } from '../firebase';
-import { collection, getDocs, deleteDoc, query, where } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, query, where, getDoc, doc } from 'firebase/firestore';
 import { Icon } from '@iconify/react';
 
 // Image import
@@ -38,6 +38,23 @@ export default function ProfileButton() {
             console.error('Log out error:', error);
         }
     };
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            if (user) {
+                const userDocRef = doc(firestore, 'users', user.uid);
+                const userSnap = await getDoc(userDocRef);
+
+                if (userSnap.exists()) {
+                    setProfileData(userSnap.data());
+                } else {
+                    console.log("No such document!");
+                }
+            }
+        };
+
+        fetchUserProfile();
+    }, [user]);
     
     // Confirm account deletion function
     const confirmDeleteAccount = async () => {

@@ -14,6 +14,8 @@ import {
     query,
     where,
     getDocs,
+    setDoc,
+    doc
 } from 'firebase/firestore';
 import { Icon } from '@iconify/react';
 
@@ -113,18 +115,21 @@ const RegistrationForm = () => {
                 displayName: name,
             });
 
-            // Add user data to Firestore
-            const userData = {
+            // Specify the document ID as user.uid
+            const docRef = doc(firestore, 'users', user.uid);
+
+            // Set the document with the specified ID
+            await setDoc(docRef, {
                 userType,
                 name,
                 email,
                 registrationDate: serverTimestamp(),
-            };
-            const docRef = await addDoc(collection(firestore, 'users'), userData);
+            });
+
             navigate(`/${user.uid}`);
         } catch (error) {
             console.error('Registration error:', error);
-            // Handle registration error, e.g., display an error message.
+            // Optionally, handle registration error, e.g., display an error message.
         }
     };
 

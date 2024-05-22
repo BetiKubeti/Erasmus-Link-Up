@@ -20,6 +20,23 @@ export default function ProfilePage() {
     const [selectedCategory, setSelectedCategory] = useState('my-posts'); // Step 2: Add state for selected category
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            if (user) {
+                const userDocRef = doc(firestore, 'users', user.uid);
+                const userSnap = await getDoc(userDocRef);
+
+                if (userSnap.exists()) {
+                    setProfileData(userSnap.data());
+                } else {
+                    console.log("No such document!");
+                }
+            }
+        };
+
+        fetchUserProfile();
+    }, [user]);
+
     // Function to handle click on My Posts button
     const handleMyPostsClick = () => {
         setSelectedCategory('my-posts');
@@ -65,7 +82,7 @@ export default function ProfilePage() {
                                 <div className='name-contact-section'>
 
                                     <div className='name-and-edit-section'>
-                                        <h3 className='profile-name'>{user?.displayName}</h3>
+                                        <h3 className='profile-name'>{profileData?.name}</h3>
                                         <div className='buttons-container'>
                                             <button className='edit-profile-button' onClick={() => setIsModalOpen(true)}><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
                                         </div>
