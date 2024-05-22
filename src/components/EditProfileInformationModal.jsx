@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth, firestore } from '../firebase';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from 'uuid';
 import { Icon } from '@iconify/react';
@@ -20,6 +20,7 @@ const EditProfileInformationModal = ({ onClose }) => {
         socialMedia3: '',
     });
 
+    const [oldProfileImageURL, setOldProfileImageURL] = useState(null);
     const storage = getStorage();
 
     useEffect(() => {
@@ -30,6 +31,7 @@ const EditProfileInformationModal = ({ onClose }) => {
                 const userDoc = await getDoc(userDocRef);
                 if (userDoc.exists()) {
                     setProfileData(userDoc.data());
+                    setOldProfileImageURL(userDoc.data().profileImageURL);
                 }
             }
         };
@@ -50,14 +52,40 @@ const EditProfileInformationModal = ({ onClose }) => {
                     console.error("Error uploading file:", error);
                 },
                 () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                        // Delete the old profile image if it exists
+                        if (oldProfileImageURL) {
+                            const oldImageRef = ref(storage, oldProfileImageURL);
+                            try {
+                                await deleteObject(oldImageRef);
+                            } catch (error) {
+                                console.error("Error deleting old file:", error);
+                            }
+                        }
                         setProfileData(prevState => ({
                             ...prevState,
                             profileImageURL: downloadURL,
                         }));
+                        setOldProfileImageURL(downloadURL);
                     });
                 }
             );
+        }
+    };
+
+    const handleRemovePhoto = async () => {
+        if (oldProfileImageURL) {
+            const imageRef = ref(storage, oldProfileImageURL);
+            try {
+                await deleteObject(imageRef);
+                setProfileData(prevState => ({
+                    ...prevState,
+                    profileImageURL: null,
+                }));
+                setOldProfileImageURL(null);
+            } catch (error) {
+                console.error("Error deleting file:", error);
+            }
         }
     };
 
@@ -101,7 +129,7 @@ const EditProfileInformationModal = ({ onClose }) => {
                         <div className='buttons-container'>
                             <input type="file" id='profile-picture-input' style={{ display: 'none' }} onChange={handleFileChange} />
                             <label htmlFor="profile-picture-input"><Icon icon="ion:camera-outline" /> <span>Add photo</span></label>
-                            <button><Icon icon="ph:trash-bold" /><span>Remove photo</span></button>
+                            <button onClick={handleRemovePhoto}><Icon icon="ph:trash-bold" /><span>Remove photo</span></button>
                         </div>
                     </div>
                     <div className='edit-profile-name'>

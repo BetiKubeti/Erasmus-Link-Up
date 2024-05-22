@@ -32,12 +32,19 @@ body {
 
 .current-profile-card .profile-picture {
     margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     width: 72px;
+    height: 72px;
+    overflow: hidden;
 }
 
 .current-profile-card .profile-picture img{
-    border-radius: 100px;
-    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
 }
 
 .current-profile-card .profile-name {
@@ -261,14 +268,21 @@ body {
 
 
 .add-to-your-feed-card .person-to-follow .person-to-follow-image {
-    margin-top: 12px;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     width: 44px;
+    height: 44px;
+    overflow: hidden;
 }
 
 
 .add-to-your-feed-card .person-to-follow .person-to-follow-image img {
-    border-radius: 100px;
-    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
 }
 
 .add-to-your-feed-card .person-to-follow .person .name {

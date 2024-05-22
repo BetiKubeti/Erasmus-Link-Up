@@ -24,6 +24,7 @@
     color: #000;
     margin: 4px 0;
     border-bottom: 1px solid transparent;
+    transition: .2s ease;
 }
 
 .footer-home-page .footer-area a:hover {
@@ -138,6 +139,7 @@
     color: #000;
     width: fit-content;
     border-bottom: 1px solid transparent;
+    transition: .2s ease;
 }
 
 .footer-signup-login .footer-container .footer-column a:hover {
@@ -147,4 +149,12 @@
 
 .footer-signup-login .footer-container .footer-column svg {
     font-size: 28px;
+}
+
+.footer-signup-login .footer-container .media-area a {
+    border-bottom: none;
+}
+
+.footer-signup-login .footer-container .media-area a:hover {
+    border-bottom: none;
 }

@@ -31,7 +31,7 @@ const FooterSignUpLogIn = () => {
                     <a href="">Copyright Policy</a>
                     <a href="">Cookies Policy</a>
                 </div>
-                <div className='footer-column'>
+                <div className='footer-column media-area'>
                     <p className='media-subtitle'>Get to know us:</p>
                     <a href=""><Icon icon="brandico:facebook-rect" style={{ color:'#034EA2' }} /></a>
                     <a href=""><Icon icon="skill-icons:instagram" /></a>
