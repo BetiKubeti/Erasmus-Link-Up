@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import React, { useEffect, useState, useRef } from 'react';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
+import { ref, deleteObject, getStorage } from 'firebase/storage';
 import { firestore } from '../firebase';
 import { Icon } from '@iconify/react';
 import DefaultProfileImage from '../assets/images/default-profile-image.jpg';
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, onPostDelete, currentUserId }) => {
     const [authorData, setAuthorData] = useState(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+    const storage = getStorage();
 
     useEffect(() => {
         const fetchAuthorData = async () => {
@@ -30,6 +34,37 @@ const PostCard = ({ post }) => {
         return `${day}.${month}.${year}`;
     };
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    const handleDeletePost = async () => {
+        try {
+            // Delete the post document from Firestore
+            await deleteDoc(doc(firestore, 'posts', post.id));
+
+            // Delete the image from Firebase Storage, if it exists
+            if (post.picture) {
+                const imageRef = ref(storage, post.picture);
+                await deleteObject(imageRef);
+            }
+
+            console.log('Post deleted successfully');
+            onPostDelete(post.id);
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
+    };
+
     if (!authorData) return null; // Return null or a loading spinner while fetching author data
 
     return (
@@ -39,15 +74,26 @@ const PostCard = ({ post }) => {
                     <div className='profile-picture'>
                         <img src={authorData.profileImageURL || DefaultProfileImage} alt="Profile" />
                     </div>
-                    
+
                     <div className="post-author">
                         <h2>{authorData.name}</h2>
                         <p>Posted on: {formatDate(post.createdAt)}</p>
                     </div>
                 </div>
 
-                <div>
-                    <Icon icon="ri:more-fill" className='more-post-button' />
+                <div className="more-post-button-container" ref={dropdownRef}>
+                    <Icon
+                        icon="ri:more-fill"
+                        className='more-post-button'
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    />
+                    {isDropdownOpen && (
+                        <div className="dropdown-menu">
+                            {post.createdBy === currentUserId && (
+                                <button onClick={handleDeletePost}>Delete</button>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="post-content">

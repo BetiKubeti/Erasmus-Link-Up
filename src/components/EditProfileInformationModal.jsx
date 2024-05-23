@@ -103,6 +103,7 @@ const EditProfileInformationModal = ({ onClose }) => {
                 const userDocRef = doc(firestore, 'users', user.uid);
                 await setDoc(userDocRef, profileData, { merge: true });
                 onClose(); // Close the modal after saving changes
+                window.location.reload();
             } catch (error) {
                 console.error("Error updating profile:", error);
             }

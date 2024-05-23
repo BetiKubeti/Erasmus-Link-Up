@@ -74,6 +74,7 @@ const CreatePostModal = ({ onClose }) => {
             });
             console.log('Post submitted successfully!');
             onClose(); // Close the modal after submission
+            window.location.reload();
         } catch (error) {
             console.error('Error submitting post:', error);
         }

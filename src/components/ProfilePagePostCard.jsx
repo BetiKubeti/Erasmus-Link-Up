@@ -86,7 +86,9 @@ export default function ProfilePagePostCard({ post }) {
                 </div>
             </div>
             <div className="post-body">
-                {post.picture && <img src={post.picture} alt="Post" className="post-image" />}
+                <div className='post-picture'>
+                    {post.picture && <img src={post.picture} alt="Post" className="post-image" />}
+                </div>
                 <div className="post-content">
                     <p>{post.postText}</p>
                 </div>

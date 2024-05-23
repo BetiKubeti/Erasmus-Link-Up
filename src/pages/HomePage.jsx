@@ -44,11 +44,18 @@ export default function HomePage() {
                 id: doc.id,
                 ...doc.data()
             }));
-            setPosts(postsData);
+            // Sort posts by creation timestamp in descending order
+            const sortedPosts = postsData.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+            setPosts(sortedPosts);
         };
 
         fetchPosts();
     }, []);
+
+    const handlePostDelete = (postId) => {
+        setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
+        window.location.reload(); // Refresh the page after deletion
+    };
 
     return (
         <>
@@ -77,9 +84,14 @@ export default function HomePage() {
                 </section>
 
                 <section className='infinite-scroll' id='infinite-scroll'>
-                        {posts.map(post => (
-                            <PostCard key={post.id} post={post} />
-                        ))}
+                    {posts.map(post => (
+                        <PostCard
+                            key={post.id}
+                            post={post}
+                            onPostDelete={handlePostDelete}
+                            currentUserId={user?.uid}
+                        />
+                    ))}
                 </section>
 
                 <section className='recommendations' id='recommendations'>

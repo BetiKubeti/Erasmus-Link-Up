@@ -132,6 +132,8 @@
     justify-content: space-between;
 }
 
+
+
 .activity-card .more-post-button {
     cursor: pointer;
 }
@@ -145,11 +147,21 @@
     display: flex;
 }
 
-.activity-card .post-image {
+.activity-card .post-body .post-picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100px;
     height: 100px;
-    margin-right: 16px;
-    border-radius: 8px;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.activity-card .post-body .post-picture .post-image {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
 }
 
 .activity-card .post-content {
