@@ -16,15 +16,19 @@ import EditProfileInformationModal from '../components/EditProfileInformationMod
 import CreatePostModal from '../components/CreatePostModal';
 import PostCard from '../components/ProfilePagePostCard';
 import TripPreferencesModal from '../components/TripPreferencesModal';
+import ApplicantsPreferencesModal from '../components/ApplicantsPreferencesModal';
 
-export default function ProfilePage() {
+export default function ProfilePage() 
+{
     const [user] = useAuthState(auth);
     const [profileData, setProfileData] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('my-posts');
     const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
     const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
     const [isTripPreferencesModalOpen, setIsTripPreferencesModalOpen] = useState(false);
-    const [tripPreference, setTripPreference] = useState('notListed');
+    const [opportunityPreference, setOpportunityPreference] = useState('notListed');
+    const [isApplicatntsPreferencesModalOpen, setIsApplicatntsPreferencesModalOpen] = useState(false);
+    const [applicantPreference, setApplicantPreference] = useState('notListed');
     const [posts, setPosts] = useState([]);
 
     // Fetch user profile info
@@ -65,9 +69,14 @@ export default function ProfilePage() {
     }, [user]);
 
     // Handle preference change
-    const handlePreferenceChange = (newPreference) => {
-        setTripPreference(newPreference);
-        console.log('Preference saved:', newPreference);  // Add logic to save preference if needed
+    const handleOpportunityPreferenceChange = (newOpportunityPreference) => {
+        setOpportunityPreference(newOpportunityPreference);
+        console.log('Preference saved:', newOpportunityPreference);  // Add logic to save preference if needed
+    };
+
+    const handleApplicantsPreferenceChange = (newApplicantsPreference) => {
+        setOpportunityPreference(newApplicantsPreference);
+        console.log('Preference saved:', newApplicantsPreference);  // Add logic to save preference if needed
     };
 
     const handleMyPostsClick = () => {
@@ -104,7 +113,7 @@ export default function ProfilePage() {
                                             <button className='edit-profile-button' onClick={() => setIsEditProfileModalOpen(true)}><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
                                         </div>
                                         {isEditProfileModalOpen && (
-                                            <EditProfileInformationModal onClose={() => setIsEditProfileModalOpen(false)} onPreferenceChange={handlePreferenceChange} />
+                                            <EditProfileInformationModal onClose={() => setIsEditProfileModalOpen(false)} />
                                         )}
                                     </div>
                                     <a href="" className='view-contact-information-button'>View contact information</a>
@@ -124,15 +133,16 @@ export default function ProfilePage() {
                                     </p>
                                     <button className='get-started-now-button' onClick={() => setIsTripPreferencesModalOpen(true)}>Get started now!</button>
                                 </div>
-                                {isTripPreferencesModalOpen && <TripPreferencesModal initialPreference={tripPreference} onClose={() => setIsTripPreferencesModalOpen(false)} onPreferenceChange={handlePreferenceChange} />}
+                                {isTripPreferencesModalOpen && <TripPreferencesModal initialOpportunityPreference={opportunityPreference} onClose={() => setIsTripPreferencesModalOpen(false)} onOpportunityPreferenceChange={handleOpportunityPreferenceChange} />}
                             </div>
                             <div className='recommendation-container'>
                                 <div className='text'>
                                     <p>
                                         Share that you're looking for applicants to join your traveling opportunities.
                                     </p>
-                                    <button href="" className='get-started-now-button'>Get started now!</button>
+                                    <button href="" className='get-started-now-button' onClick={() => setIsApplicatntsPreferencesModalOpen(true)}>Get started now!</button>
                                 </div>
+                                {isApplicatntsPreferencesModalOpen && <ApplicantsPreferencesModal initialApplicantPreference={applicantPreference} onClose={() => setIsApplicatntsPreferencesModalOpen(false)} onApplicantsPreferenceChange={handleApplicantsPreferenceChange} />}
                             </div>
                         </div>
                     </div>

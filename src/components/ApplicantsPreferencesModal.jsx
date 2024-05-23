@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 
-const TripPreferencesModal = ({ onClose, onOpportunityPreferenceChange, initialOpportunityPreference }) => {
-    const [preference, setPreference] = useState(initialOpportunityPreference);
+const ApplicantsPreferencesModal = ({ onClose, onApplicantsPreferenceChange, initialApplicantPreference }) => {
+    const [preference, setPreference] = useState(initialApplicantPreference);
 
     useEffect(() => {
-        setPreference(initialOpportunityPreference);
-    }, [initialOpportunityPreference]);
+        setPreference(initialApplicantPreference);
+    }, [initialApplicantPreference]);
 
     const handlePreferenceChange = (newPreference) => {
         setPreference(newPreference);
-        onOpportunityPreferenceChange(newPreference);
+        onApplicantsPreferenceChange(newPreference);
     };
 
     return (
         <div className="modal-overlay">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h2>Trip preferences</h2>
+                    <h2>Applicant preferences</h2>
                     <Icon icon="carbon:close-filled" className="close-button" onClick={onClose} />
                 </div>
                 <div className="modal-body">
@@ -28,7 +28,7 @@ const TripPreferencesModal = ({ onClose, onOpportunityPreferenceChange, initialO
                             checked={preference === 'listed'}
                             onChange={() => handlePreferenceChange('listed')}
                         />
-                        <span>By choosing this option, your profile will be listed as a suggestion to everyone who uses #TripOpportunities when users are searching for trip opportunities.</span>
+                        <span>By choosing this option, your profile will be listed as a suggestion to everyone who uses #TripApllicants while searching.</span>
                     </label>
                     <label className="option">
                         <input
@@ -37,7 +37,7 @@ const TripPreferencesModal = ({ onClose, onOpportunityPreferenceChange, initialO
                             checked={preference === 'notListed'}
                             onChange={() => handlePreferenceChange('notListed')}
                         />
-                        <span>By choosing this option, your profile will NOT be listed as a suggestion to everyone who uses #TripOpportunities while searching.</span>
+                        <span>By choosing this option, your profile will NOT be listed as a suggestion to everyone who uses #TripApllicants while searching.</span>
                     </label>
                 </div>
             </div>
@@ -45,4 +45,4 @@ const TripPreferencesModal = ({ onClose, onOpportunityPreferenceChange, initialO
     );
 };
 
-export default TripPreferencesModal;
+export default ApplicantsPreferencesModal;
