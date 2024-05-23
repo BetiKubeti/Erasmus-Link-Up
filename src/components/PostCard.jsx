@@ -36,10 +36,19 @@ const PostCard = ({ post }) => {
     return (
         <div className="post-card">
             <div className="post-header">
-                <img src={authorData.profileImageURL || DefaultProfileImage} alt="Profile" className="profile-picture" />
-                <div className="post-author">
-                    <h2>{authorData.name}</h2>
-                    <p>Posted on: {formatDate(post.createdAt)}</p>
+                <div className='author-info'>
+                    <div className='profile-picture'>
+                        <img src={authorData.profileImageURL || DefaultProfileImage} alt="Profile" />
+                    </div>
+                    
+                    <div className="post-author">
+                        <h2>{authorData.name}</h2>
+                        <p>Posted on: {formatDate(post.createdAt)}</p>
+                    </div>
+                </div>
+
+                <div>
+                    <Icon icon="ri:more-fill" className='more-post-button' />
                 </div>
             </div>
             <div className="post-content">
@@ -47,9 +56,9 @@ const PostCard = ({ post }) => {
                 {post.picture && <img src={post.picture} alt="Post" className="post-image" />}
             </div>
             <div className="post-actions">
-                <button><Icon icon="mdi:thumb-up-outline" /> Like</button>
-                <button><Icon icon="mdi:comment-outline" /> Comment</button>
-                <button><Icon icon="mdi:favorite-box-outline" /> Save</button>
+                <button><Icon icon="mdi:thumb-up-outline" /> <span>Like</span></button>
+                <button><Icon icon="fa-regular:comment" /> <span>Comment</span></button>
+                <button><Icon icon="mdi:favorite-box-outline" /> <span>Save</span></button>
             </div>
         </div>
     );
