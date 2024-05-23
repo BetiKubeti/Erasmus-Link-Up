@@ -12,6 +12,7 @@ import './assets/styles/FooterStyle.css';
 import './assets/styles/SearchBarStyle.css';
 import './assets/styles/NetworkPageStyle.css';
 import './assets/styles/ProfileButtonStyle.css';
+import './assets/styles/PostCardStyle.css';
 
 import HomePage from "./pages/HomePage.jsx";
 import RegistrationPage from './pages/RegistrationPage';

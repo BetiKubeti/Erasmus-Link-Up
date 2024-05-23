@@ -1,4 +1,3 @@
-// src/components/PostCard.jsx
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { firestore } from '../firebase';

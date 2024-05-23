@@ -1,0 +1,202 @@
+/* Home page post card */
+.infinite-scroll .post-card {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #FAFAFA;
+}
+
+.infinite-scroll .post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.infinite-scroll .post-header .author-info {
+    display: flex;
+    align-items: center;
+}
+
+.infinite-scroll .profile-picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.infinite-scroll .profile-picture img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.infinite-scroll .post-author h2 {
+    margin: 0;
+}
+
+.infinite-scroll .post-author p {
+    margin: 0;
+    color: #777;
+}
+
+.infinite-scroll .more-post-button {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.infinite-scroll .post-content {
+    margin-top: 10px;
+    padding: 0 12px;
+}
+
+.infinite-scroll .post-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.infinite-scroll .post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding: 12px;
+    border-top: 1px solid #606674;
+}
+
+.infinite-scroll .post-actions button {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+    color: #000;
+    border: 1px solid #ADB0B7;
+    background: #FAFAFA;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.infinite-scroll .post-actions button span {
+    border-bottom: 1px solid transparent;
+    font-size: 20px;
+    transition: .2s ease;
+}
+
+.infinite-scroll .post-actions button:hover span {
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
+}
+
+.infinite-scroll .post-actions button svg {
+    font-size: 20px;
+    transition: .2s ease;
+}
+
+.infinite-scroll .post-actions button:hover svg {
+    color: #034EA2;
+}
+
+
+/* Profile page post card */
+.activity-card .post-card {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid #606674;
+}
+
+.activity-card .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.activity-card .author-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.activity-card .post-info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activity-card .more-post-button {
+    cursor: pointer;
+}
+
+.activity-card .author-name {
+    font-size: 20px;
+    color: #606674;
+}
+
+.activity-card .post-body {
+    display: flex;
+}
+
+.activity-card .post-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 16px;
+    border-radius: 8px;
+}
+
+.activity-card .post-content {
+    flex-grow: 1;
+}
+
+.activity-card .see-more {
+    margin: 4px 0;
+    text-align: right;
+}
+
+.activity-card .see-more a {
+    color: #000;
+    text-decoration: none;
+}
+
+.activity-card .see-more a:hover {
+    color: #034EA2;
+    text-decoration: underline;
+}
+
+/* More (3 dots) button */
+
+.more-post-button-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-menu button:hover {
+    background-color: #f0f0f0;
+}

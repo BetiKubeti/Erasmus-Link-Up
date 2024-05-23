@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, firestore } from '../firebase';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, collection, query, where, getDocs } from 'firebase/firestore';
 import { Icon } from '@iconify/react';
 
 // Image import
@@ -14,13 +14,15 @@ import OtherProfilesCard from '../components/OtherProfilesCard';
 import AddToYourFeedCard from '../components/AddToYourFeedCard';
 import EditProfileInformationModal from '../components/EditProfileInformationModal';
 import CreatePostModal from '../components/CreatePostModal';
+import PostCard from '../components/ProfilePagePostCard';
 
 export default function ProfilePage() {
     const [user] = useAuthState(auth);
     const [profileData, setProfileData] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState('my-posts'); // Step 2: Add state for selected category
+    const [selectedCategory, setSelectedCategory] = useState('my-posts');
     const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
     const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -39,42 +41,45 @@ export default function ProfilePage() {
         fetchUserProfile();
     }, [user]);
 
-    // Function to handle click on My Posts button
+    useEffect(() => {
+        const fetchUserPosts = async () => {
+            if (user) {
+                const postsCollectionRef = collection(firestore, 'posts');
+                const q = query(postsCollectionRef, where('createdBy', '==', user.uid));
+                const querySnapshot = await getDocs(q);
+
+                const fetchedPosts = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setPosts(fetchedPosts);
+            }
+        };
+
+        fetchUserPosts();
+    }, [user]);
+
     const handleMyPostsClick = () => {
         setSelectedCategory('my-posts');
     };
 
-    // Function to handle click on My Toolboxes button
     const handleMyToolboxesClick = () => {
         setSelectedCategory('my-toolboxes');
     };
 
-    // Function to handle click on Saved Items button
     const handleSavedItemsClick = () => {
         setSelectedCategory('saved-items');
     };
-
-    // Simulate fetching posts data
-    const [posts, setPosts] = useState([
-        // Example posts data
-        // { id: 1, title: 'Post Title 1', content: 'Post content 1...' },
-        // { id: 2, title: 'Post Title 2', content: 'Post content 2...' },
-        // Add more posts as needed
-    ]);
 
     return (
         <>
             <Nav />
             <div className='profilepage-container'>
-
                 <section className="profiles" id="profiles">
-
                     <OtherProfilesCard />
-
                 </section>
 
                 <section className='profile-scroll' id='profile-scroll'>
-
                     <div className='profile-top-section-card'>
                         <div className='info-section'>
                             <div className='profile-picture'>
@@ -82,7 +87,6 @@ export default function ProfilePage() {
                             </div>
                             <div className='general-info'>
                                 <div className='name-contact-section'>
-
                                     <div className='name-and-edit-section'>
                                         <h3 className='profile-name'>{profileData?.name}</h3>
                                         <div className='buttons-container'>
@@ -92,11 +96,8 @@ export default function ProfilePage() {
                                             <EditProfileInformationModal onClose={() => setIsEditProfileModalOpen(false)} />
                                         )}
                                     </div>
-
                                     <a href="" className='view-contact-information-button'>View contact information</a>
-
                                 </div>
-
                                 <div className='number-of-followers-section'>
                                     <p>15 posts</p>
                                     <p>32 followers</p>
@@ -104,7 +105,6 @@ export default function ProfilePage() {
                                 </div>
                             </div>
                         </div>
-
                         <div className='profile-update-recommendations'>
                             <div className='recommendation-container'>
                                 <div className='text'>
@@ -115,7 +115,6 @@ export default function ProfilePage() {
                                 </div>
                                 <Icon icon="carbon:close-filled" />
                             </div>
-
                             <div className='recommendation-container'>
                                 <div className='text'>
                                     <p>
@@ -136,7 +135,6 @@ export default function ProfilePage() {
                             </div>
                             <p className='subtitle'>Private to you</p>
                         </div>
-
                         <div className='profile-statistics'>
                             <div className='statistics-container'>
                                 <Icon icon="bi:people-fill" />
@@ -145,7 +143,6 @@ export default function ProfilePage() {
                                     <p>This statistic reflects how many users have opened and seen your profile in the previous month.</p>
                                 </div>
                             </div>
-
                             <div className='statistics-container'>
                                 <Icon icon="gg:search" />
                                 <div className='text'>
@@ -154,7 +151,6 @@ export default function ProfilePage() {
                                 </div>
                             </div>
                         </div>
-                    
                     </div>
 
                     <div className='activity-card'>
@@ -165,7 +161,6 @@ export default function ProfilePage() {
                                 <button><span>Upload a toolbox</span></button>
                             </div>
                         </div>
-
                         <div className='categories-to-view-container'>
                             <div className='subtitle-container'>
                                 <p>Choose which category you want to view:</p>
@@ -193,26 +188,22 @@ export default function ProfilePage() {
                         </div>
 
                         <div className='content-container'>
-                            {/* Conditional rendering based on selectedCategory */}
                             {selectedCategory === 'my-posts' && (
-                                posts.length > 0 ?
+                                posts.length > 0 ? (
                                     posts.map(post => (
-                                        <div key={post.id}>
-                                            <h3>{post.title}</h3>
-                                            <p>{post.content}</p>
-                                        </div>
-                                    )) :
+                                        <PostCard key={post.id} post={post} />
+                                    ))
+                                ) : (
                                     <div className='no-content'>
                                         <p>You have not uploaded any posts yet.</p>
                                         <button onClick={() => setIsCreatePostModalOpen(true)}><span>Create your first Post Now!</span></button>
                                     </div>
+                                )
                             )}
                             {selectedCategory === 'my-toolboxes' && <div>You don't have any toolboxes yet.</div>}
                             {selectedCategory === 'saved-items' && <div>You don't have any saved items yet.</div>}
                         </div>
-
                     </div>
-                    {/* Conditionally render the CreatePostModal based on isCreatePostModalOpen state */}
                     {isCreatePostModalOpen && (
                         <CreatePostModal
                             onClose={() => setIsCreatePostModalOpen(false)}
@@ -220,15 +211,13 @@ export default function ProfilePage() {
                             oldProfileImageURL={profileData?.profileImageURL || DefaultProfileImage}
                         />
                     )}
-
                 </section>
 
                 <section className='recommendations' id='recommendations'>
                     <AddToYourFeedCard />
                 </section>
-                
             </div>
-            <Footer /> 
+            <Footer />
         </>
     );
 }
