@@ -15,6 +15,7 @@ import AddToYourFeedCard from '../components/AddToYourFeedCard';
 import EditProfileInformationModal from '../components/EditProfileInformationModal';
 import CreatePostModal from '../components/CreatePostModal';
 import PostCard from '../components/ProfilePagePostCard';
+import TripPreferencesModal from '../components/TripPreferencesModal';
 
 export default function ProfilePage() {
     const [user] = useAuthState(auth);
@@ -22,8 +23,11 @@ export default function ProfilePage() {
     const [selectedCategory, setSelectedCategory] = useState('my-posts');
     const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
     const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
+    const [isTripPreferencesModalOpen, setIsTripPreferencesModalOpen] = useState(false);
+    const [tripPreference, setTripPreference] = useState('notListed');
     const [posts, setPosts] = useState([]);
 
+    // Fetch user profile info
     useEffect(() => {
         const fetchUserProfile = async () => {
             if (user) {
@@ -41,6 +45,7 @@ export default function ProfilePage() {
         fetchUserProfile();
     }, [user]);
 
+    // Fetch user posts
     useEffect(() => {
         const fetchUserPosts = async () => {
             if (user) {
@@ -58,6 +63,12 @@ export default function ProfilePage() {
 
         fetchUserPosts();
     }, [user]);
+
+    // Handle preference change
+    const handlePreferenceChange = (newPreference) => {
+        setTripPreference(newPreference);
+        console.log('Preference saved:', newPreference);  // Add logic to save preference if needed
+    };
 
     const handleMyPostsClick = () => {
         setSelectedCategory('my-posts');
@@ -93,7 +104,7 @@ export default function ProfilePage() {
                                             <button className='edit-profile-button' onClick={() => setIsEditProfileModalOpen(true)}><Icon icon="tdesign:edit" /> <span>Edit profile</span></button>
                                         </div>
                                         {isEditProfileModalOpen && (
-                                            <EditProfileInformationModal onClose={() => setIsEditProfileModalOpen(false)} />
+                                            <EditProfileInformationModal onClose={() => setIsEditProfileModalOpen(false)} onPreferenceChange={handlePreferenceChange} />
                                         )}
                                     </div>
                                     <a href="" className='view-contact-information-button'>View contact information</a>
@@ -111,18 +122,17 @@ export default function ProfilePage() {
                                     <p>
                                         Share that you're looking for free trip deals with various educational options.
                                     </p>
-                                    <a href="" className='get-started-now-button'>Get started now!</a>
+                                    <button className='get-started-now-button' onClick={() => setIsTripPreferencesModalOpen(true)}>Get started now!</button>
                                 </div>
-                                <Icon icon="carbon:close-filled" />
+                                {isTripPreferencesModalOpen && <TripPreferencesModal initialPreference={tripPreference} onClose={() => setIsTripPreferencesModalOpen(false)} onPreferenceChange={handlePreferenceChange} />}
                             </div>
                             <div className='recommendation-container'>
                                 <div className='text'>
                                     <p>
                                         Share that you're looking for applicants to join your traveling opportunities.
                                     </p>
-                                    <a href="" className='get-started-now-button'>Get started now!</a>
+                                    <button href="" className='get-started-now-button'>Get started now!</button>
                                 </div>
-                                <Icon icon="carbon:close-filled" />
                             </div>
                         </div>
                     </div>

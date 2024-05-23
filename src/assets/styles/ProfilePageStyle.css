@@ -155,6 +155,12 @@
 
 .profile-update-recommendations .recommendation-container .text .get-started-now-button {
     color: #034EA2;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .profile-update-recommendations .recommendation-container svg {
@@ -637,4 +643,70 @@
 .submit-post-container button:hover span {
     border-bottom: 1px solid #034EA2;
     color: #034EA2;
+}
+
+/* Preferences modals */
+
+.recommendation-container .modal-content {
+    background-color: #FAFAFA;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    max-width: 69%;
+    height: 37%;
+    width: 90%;
+}
+
+.recommendation-container .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background-color: #ADB0B7;
+}
+
+.recommendation-container .modal-header h2 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.recommendation-container .close-button {
+    cursor: pointer;
+}
+
+.recommendation-container .modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.recommendation-container .option {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.recommendation-container .option:last-child {
+    border-top: 1px solid #606674;
+}
+
+.recommendation-container .option input {
+    margin-right: 10px;
+}
+
+.recommendation-container .option span {
+    font-size: 24px;
+}
+
+@media screen and (min-width: 1920px) {
+    .recommendation-container .modal-content {
+        background-color: #FAFAFA;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        max-width: 69%;
+        height: 25%;
+        width: 90%;
+    }
 }
