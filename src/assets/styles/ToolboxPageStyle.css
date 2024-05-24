@@ -1,0 +1,130 @@
+.toolbox-page {
+    margin-top: 144px;
+    margin-bottom: 56px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0px 36px;
+    gap: 24px;
+}
+
+.toolbox-content {
+    width: 100%;
+}
+
+.toolbox-page .current-profile-card .view-profile-button {
+    margin-bottom: 12px;
+}
+
+.folders-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.folders {
+    display: flex;
+    justify-content: space-between;
+}
+
+.folder {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #fafafa;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.folder-icon {
+    font-size: 64px;
+}
+
+.folder-name {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Hind Madurai' !important;
+}
+
+.files-section {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+th {
+    padding: 10px;
+    background-clip: padding-box;
+    width: 200px;
+    text-align: left;
+    border-left: 1px solid #606674;
+}
+
+th:first-child {
+    border: none;
+}
+
+td {
+    padding: 10px;
+    background-clip: padding-box;
+    width: 200px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.doc-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.doc-name svg {
+    font-size: 36px;
+}
+
+tr {
+    border: 0;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #fafafa;
+    width: 100%;
+}
+
+
+.context-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.context-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+@media screen and (min-width: 1920px) {
+    .toolbox-page {
+        margin-top: 144px;
+        margin-bottom: 112px;
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+        padding: 0px 280px;
+        gap: 24px;
+    }
+}

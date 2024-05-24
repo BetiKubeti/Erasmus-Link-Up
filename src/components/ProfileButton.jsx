@@ -177,7 +177,7 @@ export default function ProfileButton() {
                                 <Icon icon="carbon:close-filled" onClick={closeProfileDropdown} />
                             </div>
                             <div className='logout-question'>
-                                <p><b>{user?.displayName}</b>, are you sure that you want to Log out from your ErasmusLinkUp profile?</p>
+                                <p><b>{profileData?.name}</b>, are you sure that you want to Log out from your ErasmusLinkUp profile?</p>
                             </div>
                             <div className='profile-dropdown-buttons-container'>
                                 <button className='dropdown-button' id='dropdown-button' onClick={handleLogOut}><span>Continue Log Out</span></button>

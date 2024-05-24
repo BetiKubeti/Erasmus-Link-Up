@@ -75,7 +75,7 @@ export default function ProfilePage()
     };
 
     const handleApplicantsPreferenceChange = (newApplicantsPreference) => {
-        setOpportunityPreference(newApplicantsPreference);
+        setApplicantPreference(newApplicantsPreference);
         console.log('Preference saved:', newApplicantsPreference);  // Add logic to save preference if needed
     };
 

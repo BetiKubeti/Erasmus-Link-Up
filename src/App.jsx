@@ -13,13 +13,14 @@ import './assets/styles/SearchBarStyle.css';
 import './assets/styles/NetworkPageStyle.css';
 import './assets/styles/ProfileButtonStyle.css';
 import './assets/styles/PostCardStyle.css';
+import './assets/styles/ToolboxPageStyle.css';
 
 import HomePage from "./pages/HomePage.jsx";
 import RegistrationPage from './pages/RegistrationPage';
 import SignInPage from './pages/SignInPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import NetworkPage from './pages/NetworkPage.jsx';
-// import ToolBoxPage from './pages/ToolBoxPage.jsx';
+import ToolboxPage from './pages/ToolboxPage.jsx';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         <Route path="/:userid" element={<HomePage />} />
         <Route path="/:userid/profile" element={<ProfilePage />} />
         <Route path="/:userid/network" element={<NetworkPage />} />
-        <Route path="/:userid/toolbox" element={<NetworkPage />} />
+        <Route path="/:userid/toolbox" element={<ToolboxPage />} />
       </Routes>
     </Router>
   );

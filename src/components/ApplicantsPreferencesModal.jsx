@@ -28,7 +28,7 @@ const ApplicantsPreferencesModal = ({ onClose, onApplicantsPreferenceChange, ini
                             checked={preference === 'listed'}
                             onChange={() => handlePreferenceChange('listed')}
                         />
-                        <span>By choosing this option, your profile will be listed as a suggestion to everyone who uses #TripApllicants while searching.</span>
+                        <span>By choosing this option, your profile will be listed as a suggestion to everyone who uses #TripApplicants while searching.</span>
                     </label>
                     <label className="option">
                         <input
@@ -37,7 +37,7 @@ const ApplicantsPreferencesModal = ({ onClose, onApplicantsPreferenceChange, ini
                             checked={preference === 'notListed'}
                             onChange={() => handlePreferenceChange('notListed')}
                         />
-                        <span>By choosing this option, your profile will NOT be listed as a suggestion to everyone who uses #TripApllicants while searching.</span>
+                        <span>By choosing this option, your profile will NOT be listed as a suggestion to everyone who uses #TripApplicants while searching.</span>
                     </label>
                 </div>
             </div>

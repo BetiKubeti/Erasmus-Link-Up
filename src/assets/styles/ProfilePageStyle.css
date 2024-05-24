@@ -701,6 +701,12 @@
 }
 
 @media screen and (min-width: 1920px) {
+
+    .profilepage-container {
+        padding: 0 240px;
+    }
+
+
     .recommendation-container .modal-content {
         background-color: #FAFAFA;
         border-radius: 16px;
