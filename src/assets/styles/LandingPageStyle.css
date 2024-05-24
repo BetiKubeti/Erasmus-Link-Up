@@ -1,0 +1,82 @@
+.landingpage-container {
+    margin-top: 144px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0 10%;
+    gap: 24px;
+}
+
+/* Styling the 'or' text wrap */
+
+.or-text-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+/* Styling of horizontal line at the 'or' text */
+
+.horizontal-line {
+    background-color: var(--dark-gray);
+    width: 45%;
+    height: 1px;
+    line-height: 80%;
+}
+
+.landingpage-container .image-container {
+    width: 44%;
+}
+
+.landing-page-image {
+    width: 100%;
+}
+
+.landingpage-container .register-container {
+    width: 40%;
+}
+
+.landingpage-container .register-container h2 {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Montserrat';
+}
+
+.landingpage-container .register-container .button {
+    width: 100%;
+    outline: none;
+    height: 45px;
+    border: none;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-radius: 15px;
+    background-color: #FAFAFA;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 400;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+    text-decoration: none;
+    color: #000;
+}
+
+.landingpage-container .register-container .button svg {
+    font-size: 28px;
+}
+
+.landingpage-container .register-container .button span {
+    border-bottom: 1px solid transparent;
+}
+
+.landingpage-container .register-container .button:hover span {
+    border-bottom: 1px solid #034EA2;
+    color: #034EA2;
+}

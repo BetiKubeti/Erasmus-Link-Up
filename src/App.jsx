@@ -4,17 +4,19 @@ import './App.css';
 
 // Styles import
 import './assets/styles/NavStyle.css';
+import './assets/styles/LandingPageStyle.css';
 import './assets/styles/HomePageStyle.css';
 import './assets/styles/RegistrationPageStyle.css';
 import './assets/styles/SignInPageStyle.css';
 import './assets/styles/ProfilePageStyle.css';
-import './assets/styles/FooterStyle.css';
 import './assets/styles/SearchBarStyle.css';
 import './assets/styles/NetworkPageStyle.css';
 import './assets/styles/ProfileButtonStyle.css';
 import './assets/styles/PostCardStyle.css';
 import './assets/styles/ToolboxPageStyle.css';
+import './assets/styles/FooterStyle.css';
 
+import LandingPage from './pages/LandingPage.jsx';
 import HomePage from "./pages/HomePage.jsx";
 import RegistrationPage from './pages/RegistrationPage';
 import SignInPage from './pages/SignInPage.jsx';
@@ -26,6 +28,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<RegistrationPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/:userid" element={<HomePage />} />
