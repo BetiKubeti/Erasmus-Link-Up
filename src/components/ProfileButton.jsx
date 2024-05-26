@@ -33,7 +33,7 @@ export default function ProfileButton() {
         try {
             await auth.signOut();
             // Navigate to the home page after logout
-            navigate('/login');
+            navigate('/');
         } catch (error) {
             console.error('Log out error:', error);
         }
