@@ -49,3 +49,9 @@ Use the following credentials to log in:
 ![Profile Page Screenshot](screenshots/profile.png)
 ![Toolbox Screenshot](screenshots/toolbox.png)
 ![Network Screenshot](screenshots/network.png)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
